@@ -1,0 +1,138 @@
+/* YOUR CUSTOM STYLES */
+
+html,body {
+    width: 100%;
+	height: 100%;
+	background: #FFFFFF;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+	line-height: 1.42857143;
+	color: #3c3c3c;
+    overflow: hidden!important;
+}
+
+* {
+    margin:0;
+    padding:0;
+}
+
+.navbarTrack {
+    background-color: #1CB2CB;
+}
+
+.conTrack {
+    margin: 0;
+}
+
+.trackProfile {
+    background-color: #1E2026;
+}
+
+.colTrackOne {
+    background-color: #2A2E36;
+    padding: 0;
+}
+
+.colTrackTwo     {
+    background-color: #2A2E36;
+    padding: 0;
+}
+
+.profileName {
+    color: white;
+    margin: 10px 10px 10px 2px;
+}
+
+.iconChevOne {
+    margin: 5px 10px 10px 10px;
+}
+
+.iconChevTwo {
+    margin-left: 130px;
+}
+
+.btncreate {
+    background-color: #1CB2CB;
+    padding: 15px 90px 15px 90px;
+    border-radius: 5px;
+}
+
+.btncreate:hover {
+    background-color: #1CB2CB !important;
+}
+
+.divBtnIssue {
+    padding: 10px;
+}
+
+.pWork {
+    color: white;
+    margin-left: 15px;
+}
+
+.pCurrent {
+    color: white;
+    margin-left: 15px;
+}
+
+.pIssue {
+    color: white;
+    margin-left: 15px;
+}
+
+.pDone {
+    color: white;
+    margin-left: 15px;
+}
+
+.fa-bell, .fa-shopping-cart {
+    color: white !important;
+    margin: 10px 50px 20px 2px;
+    font-size: 20px !important;
+}
+
+.createTab {
+    background-color: #1E2026 !important;
+}
+
+.btnsave {
+    background-color: #48D32F !important;
+    border-radius: 5px;
+    padding: 10px 40px 10px 40px;
+}
+
+.btncancel {
+    color: black !important;
+    background-color: #EEEEEE !important;
+    border-radius: 5px;
+    padding: 10px 40px 10px 40px;
+}
+
+.btnattach {
+    background-color: #E3E3E3 !important;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+}
+
+.fa-paperclip {
+    color: black !important;
+}
+
+.btnadduser {
+    background-color: #E3E3E3 !important;
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+}
+
+.fa-user-plus {
+    color: black !important;
+}
+
+.btnfinish {
+    padding: 5px 25px 5px 25px!important;
+    background-color: #1CB2CB !important;
+}
+
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+ #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+ #sortable li span { position: absolute; margin-left: -1.3em; }
