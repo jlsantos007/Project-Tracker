@@ -57,19 +57,18 @@ class Themodeloftruth extends CI_Model {
 		return $arr;
 	}
 
-
 	function record_count()
 	{
 
-						
+
 	}
 
 	function fetch_issues($sql = array())
 	{
 		$temp = array();
-		foreach ($sql as $key => $value) 
+		foreach ($sql as $key => $value)
 		{
-			# code..	
+			# code..
 			$data = $this->db->query($value)->result_array();
 			$temp = (empty($temp)) ? $data : array_merge($temp, $data);
 		}
@@ -99,8 +98,6 @@ class Themodeloftruth extends CI_Model {
 						->result('array')[0];
 	}
 
-
-
 	function login($obj = array())
 	{
 		$sel = $this->db->select('*')->from('user_tbl');
@@ -109,8 +106,8 @@ class Themodeloftruth extends CI_Model {
 		 	$sel = $sel->where($key, $value);
 		 }
 
-		 return $sel->get(); 
-				
+		 return $sel->get();
+
 	}
 
 
@@ -150,7 +147,7 @@ class Themodeloftruth extends CI_Model {
 		}
 		return $update->set('issue_status', 'PENDING')
 					  ->where('id', $id)
-					  ->update($table); 
+					  ->update($table);
 
 	}
 
@@ -175,8 +172,8 @@ class Themodeloftruth extends CI_Model {
 						->where("id", $id)
 						->get($table)
 						->result('array')[0];
-	
-	}					
+
+	}
 
 	function approveIssue($id)
 	{
@@ -190,6 +187,14 @@ class Themodeloftruth extends CI_Model {
 		return $this->db->set('issue_status', "DONE")
 				 ->where('id', $id)
 				 ->update("issue_tbl");
+	}
+
+	function getIssue($id)
+	{
+		return $this->db->select('assigned_to, module_tbl_id, qa_type_id, git_repo_id, platform_type_id, priority_level, issue_type_id')
+						->where('id', $id)
+						->get('issue_tbl')
+						->result();
 	}
 }
 

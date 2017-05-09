@@ -1,4 +1,3 @@
-
 <div class="md-form" style="width: 250px; margin-right: 50px; margin-bottom: 0; color: white">
    <input type="text" id="username" class="input-alternate" placeholder="Username">
 </div>
