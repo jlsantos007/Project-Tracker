@@ -16,7 +16,18 @@ class Themodeloftruth extends CI_Model {
 		$this->db->insert($table, $data);
 	}
 
+	function register()
+	{
+		$data = array(
 
+				'firstname'  => $this->input->post('firstname'),
+				'lastname'   => $this->input->post('lastname'),
+				'username'   => $this->input->post('username'),
+				'access_type' => $this->input->post('access_type'),
+				'password'   => $this->input->post('password')
+			);
+		 return $this->db->insert('user_tbl', $data);
+	}
 	//custom model for library
 	function getDropDown($table)
 	{

@@ -1,6 +1,7 @@
 $(function(){
 	$("#login").click(function(){
 			var obj = { username : $("#username").val(), password : $("#password").val()};
+			console.log(obj);
 			$.ajax({
 				   type : "POST",
 				    url : $("base").attr('href') + "index.php/main/check",
@@ -24,4 +25,38 @@ $(function(){
 
 			});
 	});
+
+
+
+
+
+	$("#register").click(function(){
+		var obj = { 
+					firstname : $("#firstname").val(),
+				    lastname  : $("#lastname").val(),
+				    username  : $("#uname").val(),
+				    access_type: $("#atype").val(),
+				    password  : $("#pword").val(),
+				    password2 : $("#pword2").val(),
+				  };
+				console.log(obj);
+
+		$.ajax({
+				type : "POST",
+				 url : $("base").attr('href') + "index.php/main/register",
+				data : obj,
+			 success : function(data){
+
+			 	console.log(data);
+
+
+			 },
+			 error : function(){
+			 	console.log('error');
+			 }
+			
+
+		});
+	});
+
 });

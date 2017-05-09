@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends  MY_Controller {
 
+	
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -43,7 +45,20 @@ class Main extends  MY_Controller {
 		 }
 
 	}
+	public function register()
+	{
+			$data = array(
 
+				'firstname'  => $this->input->post('firstname'),
+				'lastname'   => $this->input->post('lastname'),
+				'username'   => $this->input->post('username'),
+				'access_type' => $this->input->post('access_type'),
+				'password'   => $this->input->post('password')
+			);
+			$this->themodeloftruth->register();
+			redirect(base_url('index.php/main'));
+
+	}
 
 
 	public function logout()
