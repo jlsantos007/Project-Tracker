@@ -1,4 +1,4 @@
-<?php 
+<?php
 $navbar = array(
                  'page_title' => $page_title,
                  'user_name' => 'levi'
@@ -25,5 +25,5 @@ $this->load->view('_partials/navbar', $navbar);
 	</div>
 </div>
 <div class="page-footer blue center-on-small-only" style="height: 9%;">
-		
+
 </div>

@@ -39,15 +39,15 @@ class Common extends MY_Controller {
 		$this->render('body/commonview');
 	}
 
-	
 
-	
+
+
 
 
 
 	public function approved()
 	{
-		
+
 		$id = $this->input->post('issueid');
 		$keme = $this->themodeloftruth->approveIssue($id);
 		if($keme)
@@ -65,6 +65,20 @@ class Common extends MY_Controller {
 	{
 		$id = $this->input->post('issueid');
 		$keme = $this->themodeloftruth->done($id);
+		if($keme)
+		{
+			echo 'success';
+		}
+		else
+		{
+			echo 'failed';
+		}
+	}
+
+	public function getIssue()
+	{
+		$id = $this->input->post('issueid');
+		$keme = $this->themodeloftruth->getIssue($id);
 		if($keme)
 		{
 			echo 'success';

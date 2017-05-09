@@ -1,9 +1,9 @@
 
 
-<?php 
+<?php
 
 	/**
-	* 
+	*
 	*/
 	class Querybuilder
 	{
@@ -12,7 +12,7 @@
 		private $boolChecker;
 		private $CI;
 		private $result = array();
-		
+
 		public function __construct($accesstype = array())
 		{
 			# code...
@@ -34,8 +34,8 @@
 			$sql = array();
 			if($this->boolChecker == 1)
 			{
-				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status = 
-			 		'DONE' AND assigned_to = " . 
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+			 		'DONE' AND assigned_to = " .
 			 		$this->CI->session->userdata('id');
 			}
 			else if($this->boolChecker == 2)
@@ -64,22 +64,22 @@
 			$sql = array();
 			if($this->boolChecker == 1)
 			{
-				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status = 
-			 		'PENDING' AND assigned_qa IS NULL AND assigned_to = " . 
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+			 		'PENDING' AND assigned_qa IS NULL AND assigned_to = " .
 			 		$this->CI->session->userdata('id');
-			 	$sql[1] = "SELECT * FROM issue_tbl WHERE track_issue_id IS NOT NULL AND isActive = 1 AND assigned_to = " . 
+			 	$sql[1] = "SELECT * FROM issue_tbl WHERE track_issue_id IS NOT NULL AND isActive = 1 AND assigned_to = " .
 			 		$this->CI->session->userdata('id');
 
 			}
 			else if($this->boolChecker == 2)
 			{
-			 	$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status = 
-			 		'PENDING' AND assigned_qa = " . 
+			 	$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+			 		'PENDING' AND isActive = 1 AND assigned_qa = " .
 			 		$this->CI->session->userdata('id');
 			}
 			else
 			{
-				
+
 			}
 
 
@@ -90,7 +90,7 @@
 
 
 			return FALSE;
-			
+
 		}
 
 		public function forApproval()
@@ -99,18 +99,13 @@
 			$this->fetch($sql);
 		}
 
-
-
-
 		public function listofissue()
 		{
-
-			
 			$sql = array();
 
 			if($this->boolChecker == 0)
 			{
-				
+
 			}
 			else if($this->boolChecker == 1)
 			{
@@ -121,11 +116,11 @@
 			else if($this->boolChecker == 2)
 			{
 				$sql[0] = "SELECT * FROM issue_tbl WHERE assigned_to IS NOT NULL AND assigned_qa IS NULL AND git_repo_id = " . $this->CI->session->userdata('git_repo_type');
-				
-			}	
+
+			}
 			else
 			{
-				
+
 			}
 
 

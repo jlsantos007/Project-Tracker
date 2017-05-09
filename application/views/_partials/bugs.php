@@ -12,17 +12,17 @@
                <?php echo '<button type="button" class="btn btnfinish pull-right" data-raw="' . $id . '">';
                      if($userdata['linkData'] == 3)
                      {
-                         echo 'Approved';
+                         echo 'Approved </button>';
                      }
                      else if($this->session->userdata('access_type') == 1)
                      {
-                        echo 'Finish';
+                        echo 'Finish </button>';
                      }
                      else
                      {
-                        echo 'QA';
+                        echo "Dev"; 
+                        echo '<button type="button" class="btn btnfinish pull-right" id="btndev">QA</button>';
                      }
-                        echo '</button>';
                ?>
          <?php endif ?>
          <button type="button" class="btn btnfinish pull-left">Details</button>

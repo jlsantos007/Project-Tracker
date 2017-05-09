@@ -5,7 +5,7 @@ class Createissue extends MY_Controller {
 
 	private $insertArr = array();
 
-	public function __construct($accesstype = array())
+	public function __construct()
 	{
 		parent::__construct();
 		//Do your magic here
@@ -43,7 +43,6 @@ class Createissue extends MY_Controller {
 
 	private function getValue()
 	{
-
 		$this->insertArr['issue_title']      = $this->input->post('title');
 		$this->insertArr['issue_desc']       = $this->input->post('description');
 		$this->insertArr['created_by']       = $this->session->userdata('id');
@@ -58,6 +57,7 @@ class Createissue extends MY_Controller {
 		 if($this->input->post('0'))
 		 {
 			 $this->insertArr['assigned_to']  = $this->input->get_post('0');
+			 $this->insertArr['assigned_qa']  = $this->input->get_post('0');
 			 $this->insertArr['start_date']		= date('Y-m-d');
 		 }
 		 if($this->input->post('issue_id'))
@@ -67,10 +67,6 @@ class Createissue extends MY_Controller {
 		 if($this->input->post('approved'))
 		 {
 			 $this->insertArr['issue_approved_by_id']  = $this->input->post('approved');
-		 }
-		 if($this->get->post['access_type'] == 2)
-		 {
-			 $this->insertArr['assigned_qa']  = $this->input->get_post('0');
 		 }
 
 		$this->insertArr['issue_status'] = 'PENDING';

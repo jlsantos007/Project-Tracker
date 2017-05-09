@@ -16,7 +16,7 @@ $(function(){
 						{
 							alert("Wrong " + data[1])
 						}
-						
+
 					},
 				  error : function(){
 				  			console.log('error');

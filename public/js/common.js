@@ -19,15 +19,15 @@
     				data : { issueid : id },
     				success : function(data){
     					if(data == "success")
-    					{    	
-    					keme.hide();			
+    					{
+    					keme.hide();
     					}
     				},
     				error  : function(){
 
     			}
     	 		});
-     		break; 
+     		break;
 
      		case "Finish" :
      			$.ajax({
@@ -37,8 +37,8 @@
     				success : function(data)
     					{
     					if(data == "success")
-    					{    	
-    					keme.hide();			
+    					{
+    					keme.hide();
     					}
     				},
     				error  : function(){
@@ -46,7 +46,14 @@
     			}
     	 		});
      			break;
+
+        case "Dev" :
+        window.location = $("base").attr('href') + "index.php/createissue/createWithTrackId/" + id;
+        keme.hide(); 
+        return false;
+      break;
+
      }
 
     });
-});	
+});
