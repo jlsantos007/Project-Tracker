@@ -20,12 +20,12 @@
                      }
                      else
                      {
-                        echo "Dev"; 
+                        echo "Dev";
                         echo '<button type="button" class="btn btnfinish pull-right" id="btndev">QA</button>';
                      }
                ?>
          <?php endif ?>
-         <button type="button" class="btn btnfinish pull-left">Details</button>
+         <?php echo '<button type="button" class="btn btnfinish pull-right" data-raw="' . $id . '">Details</button>';?>
       </div>
    </div>
 </li>

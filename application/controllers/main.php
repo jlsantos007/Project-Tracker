@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends  MY_Controller {
 
-	
+	private $insertArr = array();
 
 	public function __construct()
 	{
@@ -34,7 +34,7 @@ class Main extends  MY_Controller {
 		 	{
 		 		 //wrong password
 		 		echo '0-password';
-		 	}	
+		 	}
 		 }
 		 else
 		 {
@@ -43,6 +43,7 @@ class Main extends  MY_Controller {
 		 }
 
 	}
+
 	public function register()
 	{
 
@@ -56,6 +57,8 @@ class Main extends  MY_Controller {
 			
 			$this->themodeloftruth->register($firstname,$lastname,$username,$qa_type_id,$access_type,$password);
 			redirect(base_url('index.php/main'));
+
+
 	}
 
 

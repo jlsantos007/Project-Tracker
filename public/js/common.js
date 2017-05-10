@@ -49,9 +49,18 @@
 
         case "Dev" :
         window.location = $("base").attr('href') + "index.php/createissue/createWithTrackId/" + id;
-        keme.hide(); 
+        keme.hide();
         return false;
       break;
+
+      case "Dev" :
+      var post = $(this).closest("div").prev().closest('div').parent().parent().parent();
+  		$.get($("base").attr('href') + "index.php/listofissue/history/" + id, function(data){
+  			post.prepend(data);
+  		});
+  		return false;
+    break;
+
 
      }
 

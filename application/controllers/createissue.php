@@ -57,7 +57,6 @@ class Createissue extends MY_Controller {
 		 if($this->input->post('0'))
 		 {
 			 $this->insertArr['assigned_to']  = $this->input->get_post('0');
-			 $this->insertArr['assigned_qa']  = $this->input->get_post('0');
 			 $this->insertArr['start_date']		= date('Y-m-d');
 		 }
 		 if($this->input->post('issue_id'))
