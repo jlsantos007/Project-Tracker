@@ -16,6 +16,10 @@ class Themodeloftruth extends CI_Model {
 		$this->db->insert($table, $data);
 	}
 
+	function register($table, $data)
+	{
+		$this->db->insert($table, $data);
+	}
 
 	//custom model for library
 	function getDropDown($table)

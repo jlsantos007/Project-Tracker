@@ -24,4 +24,9 @@ $(function(){
 
 			});
 	});
+
+	$("#register").click(function(){
+		window.location = $("base").attr('href') + "index.php/main/register";
+		return false;
+		});	
 });

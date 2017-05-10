@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Main extends  MY_Controller {
 
+	private $insertArr = array();
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -34,7 +36,7 @@ class Main extends  MY_Controller {
 		 	{
 		 		 //wrong password
 		 		echo '0-password';
-		 	}	
+		 	}
 		 }
 		 else
 		 {
@@ -44,7 +46,21 @@ class Main extends  MY_Controller {
 
 	}
 
+	public function register()
+	{
+		$this->getValue();
+		$this->themodeloftruth->register('user_tbl', $this->insertArr);
+		echo 'success';
+	}
 
+	private function getValue()
+	{
+		$this->insertArr['firstname']      = $this->input->post('firstname');
+		$this->insertArr['lastname']       = $this->input->post('lastname');
+		$this->insertArr['username']       = $this->input->post('username');
+		$this->insertArr['password']   		 = $this->input->post('password');
+		$this->insertArr['access_type']    = $this->input->post('accessType');
+	}
 
 	public function logout()
 	{
