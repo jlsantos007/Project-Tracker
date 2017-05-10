@@ -45,17 +45,17 @@ class Main extends  MY_Controller {
 	}
 	public function register()
 	{
-			$data = array(
 
-				'firstname'  => $this->input->post('firstname'),
-				'lastname'   => $this->input->post('lastname'),
-				'username'   => $this->input->post('username'),
-				'access_type' => $this->input->post('access_type'),
-				'password'   => $this->input->post('password')
-			);
-			$this->themodeloftruth->register();
+				$firstname  	= $this->input->post('firstname');
+				$lastname      = $this->input->post('lastname');
+				$username      = $this->input->post('username');
+				$qa_type_id 	= $this->input->post('qa_type_id');
+				$access_type   = $this->input->post('access_type');
+				$password     = $this->input->post('password');
+
+			
+			$this->themodeloftruth->register($firstname,$lastname,$username,$qa_type_id,$access_type,$password);
 			redirect(base_url('index.php/main'));
-
 	}
 
 

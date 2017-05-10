@@ -26,18 +26,14 @@ $(function(){
 			});
 	});
 
-
-
-
-
 	$("#register").click(function(){
 		var obj = { 
-					firstname : $("#firstname").val(),
-				    lastname  : $("#lastname").val(),
-				    username  : $("#uname").val(),
+					firstname  : $("#firstname").val(),
+				    lastname   : $("#lastname").val(),
+				    username   : $("#uname").val(),
+				    qa_type_id : $("#qatype").val(),
 				    access_type: $("#atype").val(),
-				    password  : $("#pword").val(),
-				    password2 : $("#pword2").val(),
+				    password   : $("#pass").val()    
 				  };
 				console.log(obj);
 
@@ -46,13 +42,12 @@ $(function(){
 				 url : $("base").attr('href') + "index.php/main/register",
 				data : obj,
 			 success : function(data){
-
-			 	console.log(data);
-
-
+			 console.log(data);
+			 	alert("Data Save: ");
 			 },
 			 error : function(){
-			 	console.log('error');
+			 	alert("FAILED: ");
+			 console.log('error');
 			 }
 			
 
