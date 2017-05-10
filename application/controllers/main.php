@@ -18,8 +18,6 @@ class Main extends  MY_Controller {
 		$this->render('body/mainview');
 	}
 
-
-
 	public function check()
 	{
 		$username = ($this->input->post('username')) ? $this->input->post('username') : '';
@@ -45,6 +43,7 @@ class Main extends  MY_Controller {
 		 }
 
 	}
+
 
 	public function register()
 	{

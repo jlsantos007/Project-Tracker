@@ -55,6 +55,7 @@ $this->load->view('_partials/navbar', $navbar);
   </div>
 </div>
 
+
 			</div>
 		</div>
 	</div>
