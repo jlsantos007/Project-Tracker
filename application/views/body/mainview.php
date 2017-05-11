@@ -27,14 +27,6 @@ $this->load->view('_partials/navbar', $navbar);
 			<input type="text" class="form-control" id="firstname" placeholder="Enter Firstname">
 			</div>
 
-  <div align="center-on-small-only">
-  <div class="col-md-6">
-    <h2>Add Account</h2>
-    <div class="form-group">
-    <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter Firstname">
-    </div>
-
-
     <div class="form-group">
     <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter LastName">
     </div>
@@ -64,10 +56,6 @@ $this->load->view('_partials/navbar', $navbar);
 			<div class="form-group">
 			<input type="password" class="form-control" id="pass" placeholder="Password">
 			</div>
-
-    <div class="form-group">
-    <input type="password" class="form-control" id="pword2" placeholder="Confirm Password">
-    </div>
 
     <button type="submit" id="register" class="btn block btn-primary btn-block">Submit</button>
   </div>

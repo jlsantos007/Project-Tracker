@@ -18,7 +18,7 @@ $this->load->view('_partials/navbar', $navbar);
                        <!-- Panel trello -->
                         <div class="card text-center">
                             <div class="card-header default-color-dark white-text" style="background-color: #1CB2CB !important;">
-                                <h1>Issues</h1>
+                                <h1>Done</h1>
                             </div>
                             <div class="card-block">
                                 <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
@@ -38,7 +38,7 @@ $this->load->view('_partials/navbar', $navbar);
                                            }
                                            if(!$hasCommon)
                                            {
-                                            $this->load->view('_partials/issue_cardview', $data);
+                                            $this->load->view('_partials/done_cardview', $data);
                                            }
 
                                            ?>

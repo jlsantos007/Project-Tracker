@@ -10,6 +10,7 @@ class Createissue extends MY_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('themodeloftruth');
+		$this->load->helper(array('form', 'url'));
 	}
 
 	public function index()
@@ -17,6 +18,7 @@ class Createissue extends MY_Controller {
 		$this->add_script('public/js/sortable.js');
 		$this->load->library('dropdown');
 		$var = $this->dropdown->getArr();
+
 		$this->addmViewData(array('tables' => $var));
 		$this->addmViewData(array('labels' => array(
 													'Assigned to',
@@ -28,17 +30,28 @@ class Createissue extends MY_Controller {
 													'Issue Type'
 												  ))
 						   						  );
+
 		$this->render('body/projecttracker');
 	}
-
 
 	public function insert()
 	{
 		 $this->getValue();
 		 $this->themodeloftruth->insertdata('issue_tbl', $this->insertArr);
+
+		 $config = array(
+		 'upload_path' 	=> "./uploads/",
+		 'allowed_types' => "gif|jpg|png|jpeg|pdf",
+		 'overwrite' 	=> TRUE,
+		 'max_size' 		=> "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+		 'max_height' 	=> "768",
+		 'max_width' 	=> "1024"
+		 );
+		 $this->load->library('upload', $config);
+		 $this->upload->insert();
+
 		 echo 'success';
 		 //print_r($this->insertArr);
-
 	}
 
 	private function getValue()
@@ -58,6 +71,10 @@ class Createissue extends MY_Controller {
 		 {
 			 $this->insertArr['assigned_to']  = $this->input->get_post('0');
 			 $this->insertArr['start_date']		= date('Y-m-d');
+			 if ($this->session->userdata('access_type') == 3)
+			 {
+			 	$this->insertArr['assigned_qa'] = $this->input->get_post('0');
+			 }
 		 }
 		 if($this->input->post('issue_id'))
 		 {
@@ -79,7 +96,7 @@ class Createissue extends MY_Controller {
 
 	public function createWithTrackId($id)
 	{
-			$this->themodeloftruth->updateisActive(array('isActive' => 0), 'issue_tbl', array('id' => $id));
+			$this->themodeloftruth->updateisActive(array('isActive' => 0, 'issue_status' => "DONE"), 'issue_tbl', array('id' => $id));
 			$this->load->library('issuetracking', $this->themodeloftruth->select_issue($id));
 			$this->addmViewData($this->themodeloftruth->select_issue($id));
 			$this->addmViewData(array('rel_data' => $this->issuetracking->builder()));

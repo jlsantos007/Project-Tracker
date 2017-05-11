@@ -16,6 +16,6 @@
         <?php foreach ($sidebar as $key => $value): ?>
             <?php $this->load->view('_partials/sidebar/menulist', $value); ?>
         <?php endforeach ?>
-           
+
         </div>
 </div>

@@ -79,7 +79,9 @@
 			}
 			else
 			{
-
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+			 		'PENDING' AND isActive = 1 AND assigned_qa = " .
+			 		$this->CI->session->userdata('id');
 			}
 
 
@@ -105,7 +107,7 @@
 
 			if($this->boolChecker == 0)
 			{
-
+				$sql[0] = "SELECT * FROM issue_tbl";
 			}
 			else if($this->boolChecker == 1)
 			{
@@ -120,7 +122,7 @@
 			}
 			else
 			{
-
+				$sql[0] = "SELECT * FROM issue_tbl";
 			}
 
 

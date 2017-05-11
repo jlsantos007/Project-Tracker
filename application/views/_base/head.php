@@ -7,11 +7,11 @@
     <base href="<?php echo $base_url; ?>" />
 
     <title><?php echo $page_title; ?></title>
-    <?php 
-    	foreach ($stylesheets as $media => $files) 
+    <?php
+    	foreach ($stylesheets as $media => $files)
     	{
-    		
-    		foreach ($files as $file) 
+
+    		foreach ($files as $file)
     		{
     			$url = start_with($file, 'http') ? $file : base_url($file);
     			echo "<link href='$url' rel='stylesheet' media='$media' />" . PHP_EOL;
@@ -21,14 +21,14 @@
 
         if(!empty($scripts['head']))
         {
-            foreach ($scripts['head'] as $file) 
+            foreach ($scripts['head'] as $file)
             {
                 $url = starts_with($file, 'http') ? $file : base_url($file);
                 echo "<scripts type='text/javascript' src='$url'></scripts>" . PHP_EOL;
             }
         }
-    		
-    	
+
+
      ?>
 
 </head>

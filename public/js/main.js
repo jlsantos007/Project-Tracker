@@ -27,13 +27,13 @@ $(function(){
 	});
 
 	$("#register").click(function(){
-		var obj = { 
+		var obj = {
 					firstname  : $("#firstname").val(),
 				    lastname   : $("#lastname").val(),
 				    username   : $("#uname").val(),
 				    qa_type_id : $("#qatype").val(),
 				    access_type: $("#atype").val(),
-				    password   : $("#pass").val()    
+				    password   : $("#pass").val()
 				  };
 				console.log(obj);
 
@@ -49,8 +49,9 @@ $(function(){
 			 	alert("FAILED: ");
 			 console.log('error');
 			 }
-			
+
 
 		});
 
+	});
 });

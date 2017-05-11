@@ -7,7 +7,6 @@
         <?php else: ?>
         	<?php
         	echo '<div class="btn-group pull-right">';
-        	echo '<button type="button" class="btn btn-info details" style="height: 30px; margin-top: 10px; line-height: 5px;">Details</button>';
         	echo '</div>';
         	?>
         <?php endif ?>

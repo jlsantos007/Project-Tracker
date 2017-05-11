@@ -10,10 +10,10 @@ class Themodeloftruth extends CI_Model {
 		$this->load->database();
 	}
 
-	// function insertdata($table, $data)
-	// {
-	// 	$this->db->insert($table, $data);
-	// }
+	function insertdata($table, $data)
+	{
+	 	$this->db->insert($table, $data);
+ 	}
 
 	function register($firstname,$lastname,$username,$qa_type_id,$access_type,$password)
 	{
@@ -181,6 +181,13 @@ class Themodeloftruth extends CI_Model {
 	function done($id)
 	{
 		return $this->db->set('issue_status', "DONE")
+				 ->where('id', $id)
+				 ->update("issue_tbl");
+	}
+
+	function finishQA($id)
+	{
+		return $this->db->set('issue_status', "DONE")->set('isActive', 0)
 				 ->where('id', $id)
 				 ->update("issue_tbl");
 	}

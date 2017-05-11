@@ -1,10 +1,10 @@
 <!-- Head -->
-<?php 
+<?php
 $navbar = array(
                  'page_title' => $page_title,
                  'user_name' => $this->session->userdata('firstname')
                );
-$this->load->view('_partials/navbar', $navbar); 
+$this->load->view('_partials/navbar', $navbar);
 ?>
 <?php echo PHP_EOL;?>
 <div class="row" style="height:100%;">
@@ -25,9 +25,9 @@ $this->load->view('_partials/navbar', $navbar);
     </div> <!-- end colTrackTwo -->
     <?php
     echo PHP_EOL;
-    $arr = array(); 
+    $arr = array();
     $arr['sidebar'] = data_builder($this->session->userdata('access_type'));
-    $this->load->view('_partials/sidebar', $arr); 
+    $this->load->view('_partials/sidebar', $arr);
     echo PHP_EOL;
     ?>
 </div> <!-- end of row -->

@@ -35,9 +35,70 @@ $(function(){
 	});
 
 
-	  $(".make-issue").click(function(){
-	  		var d = $(this).attr('data-raw');
-	  		window.location = $("base").attr('href') + "index.php/createissue/createWithTrackId/" + d; 
-	  		return false;
+	  $(".finish").click(function(){
+			var id = $(this).attr('data-raw');
+    	var self = $(this);
+			$.ajax({
+				type : "POST",
+				url  : $("base").attr('href') + "index.php/common/done",
+				data : { issueid : id },
+				success : function(data)
+					{
+					if(data == "success")
+					{
+					self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+					}
+				},
+				error  : function(){
+
+			}
+			});
 	  });
+
+		$(".developer").click(function(){
+			var id = $(this).attr('data-raw');
+			var self = $(this);
+      window.location = $("base").attr('href') + "index.php/createissue/createWithTrackId/" + id;
+			self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+      return false;
+		});
+
+		$(".approved").click(function(){
+			var id = $(this).attr('data-raw');
+			var self = $(this);
+			$.ajax({
+				type : "POST",
+				url  : $("base").attr('href') + "index.php/common/approved",
+				data : { issueid : id },
+				success : function(data){
+					if(data == "success")
+					{
+					self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+					}
+				},
+				error  : function(){
+
+			}
+			});
+		});
+
+		$(".done").click(function(){
+			var id = $(this).attr('data-raw');
+			var self = $(this);
+			$.ajax({
+				type : "POST",
+				url  : $("base").attr('href') + "index.php/common/finishQA",
+				data : { issueid : id },
+				success : function(data){
+					if(data == "success")
+					{
+					self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+					}
+				},
+				error  : function(){
+
+			}
+			});
+		});
+
 });

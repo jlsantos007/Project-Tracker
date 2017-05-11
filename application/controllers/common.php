@@ -11,32 +11,45 @@ class Common extends MY_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('themodeloftruth');
+		$this->load->library('pagination');
 	}
 
-	public function index($data)
+	public function index($datas)
 	{
 		$this->load->library('querybuilder', array( 'access' =>$this->session->userdata('access_type')));
-		if($data == 1)
+		if($datas == 1)
 		{
 			// backlog
 			$this->querybuilder->backlog();
-
-
 		}
-		else if($data == 2){
+
+		else if($datas == 2){
 			// done
 			$this->querybuilder->done();
 		}
-		else
+		else if($datas == 3)
 		{
 			//approve
 			$this->querybuilder->forApproval();
 		}
 
-		$this->addmViewData(array('panelData' => $this->querybuilder->getResult()));
-		$this->addmViewData(array( 'linkData' => $data));
-		$this->add_script('public/js/common.js');
-		$this->render('body/commonview');
+		$config["total_rows"] = $this->querybuilder->getCount();
+		$config["per_page"] = 5;
+		$config["uri_segment"] = 3;
+		$choice = $config["total_rows"] / $config["per_page"];
+		$config["num_links"] = $choice;
+
+
+		$this->pagination->initialize($config);
+
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$data["results"] = $this->querybuilder->getResult();
+		$data["links"] = $this->pagination->create_links();
+		$this->add_script('public/js/issue.js');
+		$this->addmViewData(array( 'linkData' => $datas));
+		$this->addmViewData($data);
+		$this->render('body/issues');
+
 	}
 
 
@@ -65,6 +78,20 @@ class Common extends MY_Controller {
 	{
 		$id = $this->input->post('issueid');
 		$keme = $this->themodeloftruth->done($id);
+		if($keme)
+		{
+			echo 'success';
+		}
+		else
+		{
+			echo 'failed';
+		}
+	}
+
+	public function finishQA()
+	{
+		$id = $this->input->post('issueid');
+		$keme = $this->themodeloftruth->finishQA($id);
 		if($keme)
 		{
 			echo 'success';

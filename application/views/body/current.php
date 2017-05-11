@@ -25,9 +25,7 @@ $this->load->view('_partials/navbar', $navbar);
                                     <?php if ($userdata['results']): ?>
                                         <?php foreach ($userdata['results'] as $data): ?>
                                            <?php
-                                           $hasCommon = FALSE;
-                                           $temp = explode(" ", $this->session->userdata('cart'));
-                                           foreach ($temp as $key => $value)
+                                           foreach ($data as $key => $value)
                                            {
                                                # code...
                                                if($data['id'] == $value)

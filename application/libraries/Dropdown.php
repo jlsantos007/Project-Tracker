@@ -1,15 +1,15 @@
-<?php 
+<?php
 
 	/**
-	* 
+	*
 	*/
 	class Dropdown
 	{
-		
+
 		private $mData;
 		private $CI;
 		private $tables = array(
-								 'user_tbl', 
+								 'user_tbl',
 							     'modules_tbl',
 								 'qa_type_tbl',
 								 'git_repo_tbl',
