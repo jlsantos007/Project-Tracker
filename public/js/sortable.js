@@ -1,4 +1,4 @@
-    
+
 	var obj = {};
 
 
@@ -29,9 +29,10 @@
         }
     	obj['title'] = $("#form3").val();
     	obj['description'] = $("#form1").val();
-        
-           
-        
+			obj['image'] = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
+
+
+
 
 
 
@@ -75,20 +76,13 @@
 		 {
 		 	$(span[i]).find("span").text(" ");
 		 }
-		 
-	
+
+
 
 		$("#form1").val(" ");
 		$("#form3").val(" ");
         $("#approved").val(" ");
         $("#track_id").val(" ");
+		$("#image").val(" ");
 
     }
-
-
-
-
-
-
-
-   

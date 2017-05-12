@@ -44,13 +44,14 @@
                                         <label for="form1" class="">Issue Description:</label>
                                     </div>
 
-                                    <button type="button" class="btn btnattach">
-                                        <i class="fa fa-paperclip" aria-hidden="true"></i>
-                                    </button>
-
-                                    <button type="button" class="btn btnadduser">
-                                        <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                    </button>
+                                    <?php
+                                  		echo form_open_multipart('Upload/do_upload');
+                                  	?>
+                                  	 <form action = "" method = "">
+                                           <input type = "file" name = "userfile" size = "20" id="image"/>
+                                           <br /><br />
+                                           <input type = "submit" value = "upload" class="btn btn-success" />
+                                     </form>
                                 </div>
                             </div>
                         </div>

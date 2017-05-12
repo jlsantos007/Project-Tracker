@@ -118,7 +118,6 @@
 			else if($this->boolChecker == 2)
 			{
 				$sql[0] = "SELECT * FROM issue_tbl WHERE assigned_to IS NOT NULL AND assigned_qa IS NULL AND git_repo_id = " . $this->CI->session->userdata('git_repo_type');
-
 			}
 			else
 			{
