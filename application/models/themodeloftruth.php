@@ -15,13 +15,24 @@ class Themodeloftruth extends CI_Model {
 	 	$this->db->insert($table, $data);
  	}
 
-	function register($firstname,$lastname,$username,$qa_type_id,$access_type,$password)
+	function register($firstname,$lastname,$username,$git_repo_type,$access_type,$password,$qa_type_id,$approve_issue_access)
 	{
 
 		  return $this->db->insert('user_tbl', array('firstname'=>$firstname,'lastname'=>$lastname,
-		  						'username'=>$username,'password'=>$password,'access_type'=>$access_type,'qa_type_id'=>$qa_type_id));
+		  						'username'=>$username,'password'=>$password,'git_repo_type'=>$git_repo_type,'access_type'=>$access_type,'qa_type_id'=>$qa_type_id,'approve_issue_access'=>$approve_issue_access));
 		$this->db->insert($table, $data);
 	}
+	
+	public function check_username_exists($username){
+			$query = $this->db->get_where('user_tbl', array('username' => $username));
+
+			if(empty($query->row_array())){
+				return true;
+			} else{
+				return false;
+			}
+
+		}
 
 
 	//custom model for library

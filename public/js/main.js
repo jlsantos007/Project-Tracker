@@ -27,13 +27,14 @@ $(function(){
 	});
 
 	$("#register").click(function(){
-		var obj = {
-					firstname  : $("#firstname").val(),
-				    lastname   : $("#lastname").val(),
-				    username   : $("#uname").val(),
-				    qa_type_id : $("#qatype").val(),
-				    access_type: $("#atype").val(),
-				    password   : $("#pass").val()
+		var obj = { 
+					firstname     : $("#firstname").val(),
+				    lastname      : $("#lastname").val(),
+				    username      : $("#uname").val(),
+				    git_repo_type : $("#gitrepo").val(),
+				    access_type   : $("#atype").val(),
+				    password      : $("#pass").val(),
+				    password2     : $("#pass2").val()
 				  };
 				console.log(obj);
 
@@ -43,15 +44,15 @@ $(function(){
 				data : obj,
 			 success : function(data){
 			 console.log(data);
-			 	alert("Data Save: ");
+
 			 },
 			 error : function(){
-			 	alert("FAILED: ");
 			 console.log('error');
 			 }
-
+			
 
 		});
 
 	});
+
 });
