@@ -41,7 +41,7 @@ $this->load->view('_partials/navbar', $navbar);
 
 			<div class="form-group">
 			          <select  id="atype" class="form-control">
-			                <option  id="0" value="0">Management</option>
+			          <option  id="0" value="0">Management</option>
   							<option id="1" value="1">Devs</option>
   							<option id="2" value="2">QA</option>
   							<option id="3" value="3">QA/Management</option>

@@ -38,18 +38,6 @@ class Createissue extends MY_Controller {
 	{
 		 $this->getValue();
 		 $this->themodeloftruth->insertdata('issue_tbl', $this->insertArr);
-
-		 $config = array(
-		 'upload_path' 	=> "./uploads/",
-		 'allowed_types' => "gif|jpg|png|jpeg|pdf",
-		 'overwrite' 	=> TRUE,
-		 'max_size' 		=> "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-		 'max_height' 	=> "768",
-		 'max_width' 	=> "1024"
-		 );
-		 $this->load->library('upload', $config);
-		 $this->upload->insert();
-
 		 echo 'success';
 		 //print_r($this->insertArr);
 	}
@@ -58,6 +46,7 @@ class Createissue extends MY_Controller {
 	{
 		$this->insertArr['issue_title']      = $this->input->post('title');
 		$this->insertArr['issue_desc']       = $this->input->post('description');
+		$this->insertArr['image']						 = $this->input->post('image');
 		$this->insertArr['created_by']       = $this->session->userdata('id');
 		$this->insertArr['modules_tbl_id']   = $this->input->post('1');
 		$this->insertArr['qa_type_id']       = $this->input->post('2');

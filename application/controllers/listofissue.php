@@ -11,7 +11,7 @@ class Listofissue extends MY_Controller {
 		//Do your magic here
 		$this->load->model('themodeloftruth');
 		$this->load->library('pagination');
-		
+
 	}
 
 	public function index()
@@ -44,7 +44,6 @@ class Listofissue extends MY_Controller {
 	{
 		$var = $this->recursive($id, $this->dataHtml);
 		$this->load->library('history', $var);
-		
 	}
 
 
@@ -60,7 +59,7 @@ class Listofissue extends MY_Controller {
 
 	   }
 	   else
-	   {	
+	   {
 	   		return $this->history($init['track_issue_id'], $arr);
 
 	   }
@@ -74,10 +73,10 @@ class Listofissue extends MY_Controller {
 		$temp = '';
 		if($this->check($cookData)){
 
-		
+
 		if($this->session->userdata('cart'))
 		{
-			$temp = $this->session->userdata('cart') . " " . $cookData;	
+			$temp = $this->session->userdata('cart') . " " . $cookData;
 			$this->session->unset_userdata('cart');
 		}
 		else
@@ -115,7 +114,7 @@ class Listofissue extends MY_Controller {
 
 
 
-	
+
 
 
 

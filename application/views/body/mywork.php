@@ -17,7 +17,7 @@ $this->load->view('_partials/navbar', $navbar);
                 <div class="tab-pane fade in show active" id="panel5" role="tabpanel" style="margin-top: -12px">
                     <br>
                         <ul id="sortable" style="width: 500px">
-                              <!-- list of bugs -->
+
                         </ul>
                 </div>
             </div>

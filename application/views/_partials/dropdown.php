@@ -11,7 +11,7 @@
            echo  '<a class="dropdown-item done" href="'.base_url().'index.php/common/index/1'.'" data-raw="' . $id . '">Done</a>';
          }
          elseif ($userdata['linkData'] == 3 && $this->session->userdata('access_type') == 3) {
-           echo  '<a class="dropdown-item approved" href="'.base_url().'index.php/common/index/3'.'" data-raw="' . $id . '">Approval</a>';
+           echo  '<a class="dropdown-item approved" href="'.base_url().'index.php/common/index/3'.'" data-raw="' . $id . '">Approved</a>';
          }
          elseif ($userdata['linkData'] != 1 && $userdata['linkData'] != 2 && $userdata['linkData'] != 3) {
            echo  '<a class="dropdown-item cart" href="#" data-raw="' . $id . '">Add to cart</a>';
