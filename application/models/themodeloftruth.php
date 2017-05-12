@@ -19,10 +19,10 @@ class Themodeloftruth extends CI_Model {
 	{
 
 		  return $this->db->insert('user_tbl', array('firstname'=>$firstname,'lastname'=>$lastname,
-		  						'username'=>$username,'password'=>$password,'git_repo_type'=>$git_repo_type,'access_type'=>$access_type,'qa_type_id'=>$qa_type_id,'approve_issue_access'=>$approve_issue_access));
+		  						'username'=>$username, 'git_repo_type'=>$git_repo_type,'access_type'=>$access_type, 'password'=>$password, 'qa_type_id'=>$qa_type_id, 'approve_issue_access'=>$approve_issue_access));
 		$this->db->insert($table, $data);
 	}
-	
+
 	public function check_username_exists($username){
 			$query = $this->db->get_where('user_tbl', array('username' => $username));
 

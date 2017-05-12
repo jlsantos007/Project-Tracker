@@ -1,5 +1,5 @@
 <a href="<?php echo base_url() . 'index.php/cart' ?>">
-<i class="fa fa-shopping-cart" aria-hidden="true">
+    <i class="fa fa-shopping-cart" aria-hidden="true">
 <span class="badge red" id="badge" style="font-size: 10px;"><?php echo (empty($this->session->userdata('cart'))) ? null :  count(explode(" ", $this->session->userdata('cart')));?></span></i>
 </a>
 <div class="btn-group" style="height: 40px; width: 200px">

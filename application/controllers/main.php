@@ -16,6 +16,7 @@ class Main extends  MY_Controller {
 	public function index()
 	{
 		$this->add_script('public/js/main.js');
+		$this->add_script('public/wikiquote-api.js');
 		$this->render('body/mainview');
 	}
 
@@ -46,7 +47,7 @@ class Main extends  MY_Controller {
 	}
 
 	public function register()
-	{ 
+	{
 				 $this->form_validation->set_rules('firstname','FirstName','required');
 				 $this->form_validation->set_rules('lastname','LastName','required');
 				 $this->form_validation->set_rules('username','Username','required|callback_check_username_exists');
@@ -54,14 +55,14 @@ class Main extends  MY_Controller {
 				 $this->form_validation->set_rules('password2','Confirm Password','matches[password]');
 
 
-				$firstname  	= $this->input->post('firstname');
+				$firstname  		= $this->input->post('firstname');
 				$lastname       = $this->input->post('lastname');
 				$username       = $this->input->post('username');
 				$git_repo_type 	= $this->input->post('git_repo_type');
 				$access_type    = $this->input->post('access_type');
 				$password       = $this->input->post('password');
 
-				
+
 				if($this->input->post('access_type') == 0)
 				{
 					$qa_type_id           = null;
@@ -71,29 +72,29 @@ class Main extends  MY_Controller {
 				} elseif($this->input->post('access_type') == 1)
 				{
 					$qa_type_id           = null;
-					
+
 					$approve_issue_access = "0";
 				}
-				elseif ($this->input->post('access_type') == 2) 
+				elseif ($this->input->post('access_type') == 2)
 				{
 					$qa_type_id           = "1";
-				
+
 					$approve_issue_access = "0";
 
 				} elseif($this->input->post('access_type') == 3)
 				{
 					$qa_type_id           = "2";
-					
+
 					$approve_issue_access = "1";
 
-					
-				} 
-			
+
+				}
+
 
 			if($this->form_validation->run() === FALSE)
 			{
-				
-			} else{	
+
+			} else{
 
 			$this->themodeloftruth->register($firstname,$lastname,$username,$git_repo_type,$access_type,$password,$qa_type_id,$approve_issue_access);
 			redirect(base_url('index.php/main'));

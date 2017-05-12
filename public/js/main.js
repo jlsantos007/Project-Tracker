@@ -27,8 +27,8 @@ $(function(){
 	});
 
 	$("#register").click(function(){
-		var obj = { 
-					firstname     : $("#firstname").val(),
+		var obj = {
+						firstname     : $("#firstname").val(),
 				    lastname      : $("#lastname").val(),
 				    username      : $("#uname").val(),
 				    git_repo_type : $("#gitrepo").val(),
@@ -43,16 +43,28 @@ $(function(){
 				 url : $("base").attr('href') + "index.php/main/register",
 				data : obj,
 			 success : function(data){
+				 eraser();
 			 console.log(data);
 
 			 },
 			 error : function(){
 			 console.log('error');
 			 }
-			
+
 
 		});
 
 	});
 
 });
+
+function eraser()
+{
+	$("#firstname").val("");
+ 	$("#lastname").val("");
+ 	$("#uname").val("");
+ 	$("#gitrepo").val("");
+ 	$("#atype").val("");
+	$("#pass").val("");
+ 	$("#pass2").val("");
+}
