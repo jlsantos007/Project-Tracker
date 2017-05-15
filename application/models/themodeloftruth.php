@@ -19,11 +19,12 @@ class Themodeloftruth extends CI_Model {
 	{
 
 		  return $this->db->insert('user_tbl', array('firstname'=>$firstname,'lastname'=>$lastname,
-		  						'username'=>$username, 'git_repo_type'=>$git_repo_type,'access_type'=>$access_type, 'password'=>$password, 'qa_type_id'=>$qa_type_id, 'approve_issue_access'=>$approve_issue_access));
+		  						'username'=>$username,'password'=>$password,'git_repo_type'=>$git_repo_type,'access_type'=>$access_type,'qa_type_id'=>$qa_type_id,'approve_issue_access'=>$approve_issue_access));
 		$this->db->insert($table, $data);
 	}
 
 	public function check_username_exists($username){
+
 			$query = $this->db->get_where('user_tbl', array('username' => $username));
 
 			if(empty($query->row_array())){
@@ -33,6 +34,7 @@ class Themodeloftruth extends CI_Model {
 			}
 
 		}
+
 
 
 	//custom model for library
@@ -59,6 +61,24 @@ class Themodeloftruth extends CI_Model {
 		{
 			# code...
 			$name = $value->firstname . ' ' . $value->lastname;
+			$arr[$name] = $value->id;
+		}
+		return $arr;
+	}
+
+	function issueType()
+	{
+		$var = $this->db->select('id, name')
+						->from('issue_type')
+						->where('name', 'enhancement')
+						->or_where('id', 3)
+						->get()
+						->result();
+		$arr = array();
+		foreach ($var as $key => $value)
+		{
+			# code...
+			$name = $value->name;
 			$arr[$name] = $value->id;
 		}
 		return $arr;
@@ -116,7 +136,6 @@ class Themodeloftruth extends CI_Model {
 		 return $sel->get();
 
 	}
-
 
 	function selectCartIssue($arr = array())
 	{

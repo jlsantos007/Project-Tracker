@@ -27,14 +27,9 @@
             obj['issue_id'] = $("#track_id").val();
             obj['approved'] = $("#approved").val();
         }
-    	obj['title'] = $("#form3").val();
-    	obj['description'] = $("#form1").val();
-			obj['image'] = $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
-
-
-
-
-
+    	obj['title'] 				= $("#form3").val();
+    	obj['description']  = $("#form1").val();
+			obj['image'] 				= $('input[type=file]').val().replace(/C:\\fakepath\\/i, '');
 
     	$.ajax({
     		type    : "POST",
@@ -42,7 +37,7 @@
     		data    : obj,
     		success : function(data){
     				eraser();
-                    console.log(data);
+            console.log(data);
     		},
     		error   : function(){
     			console.log("error");
@@ -51,7 +46,26 @@
         return false;
     });
 
-
+		$(".btnsave").click(function(){
+			var file_data = $('#file').prop('files')[0];
+      var form_data = new FormData();
+      form_data.append('file', file_data);
+      $.ajax({
+          url: $("base").attr('href') + "index.php/createissue/do_upload",
+          dataType: 'text',
+          cache: false,
+          contentType: false,
+          processData: false,
+          data: form_data,
+          type: 'post',
+          success: function (response) {
+              $('#msg').html(response); // display success response from the server
+          },
+          error: function (response) {
+              $('#msg').html(response); // display error response from the server
+          }
+      });
+		});
 
     $(".btncancel").click(function(){
     	eraser();
@@ -63,7 +77,7 @@
     function eraser()
     {
     	var span = [
-    				'.divassigned',
+    			'.divassigned',
 					'.divmodule',
 					'.divqa',
 					'.divgit',
@@ -77,12 +91,10 @@
 		 	$(span[i]).find("span").text(" ");
 		 }
 
-
-
 		$("#form1").val(" ");
 		$("#form3").val(" ");
-        $("#approved").val(" ");
-        $("#track_id").val(" ");
+    $("#approved").val(" ");
+    $("#track_id").val(" ");
 		$("#image").val(" ");
 
     }

@@ -95,6 +95,11 @@
 				return FALSE;
 			}
 
+			if($val == 'image')
+			{
+				return FALSE;
+			}
+
 			if($val == 'created_by')
 			{
 				return FALSE;

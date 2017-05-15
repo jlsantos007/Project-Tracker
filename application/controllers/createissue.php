@@ -34,6 +34,37 @@ class Createissue extends MY_Controller {
 		$this->render('body/projecttracker');
 	}
 
+	public function do_upload()
+	{
+			$config = array(
+			'upload_path' 	=> "./uploads/",
+			'allowed_types' => "gif|jpg|png|jpeg|pdf",
+			'overwrite' 	=> TRUE,
+			'max_size' 		=> "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+			'max_height' 	=> "",
+			'max_width' 	=> ""
+			);
+			if (isset($_FILES['file']['name'])) {
+			              if (0 < $_FILES['file']['error']) {
+			                  echo 'Error during file upload' . $_FILES['file']['error'];
+			              } else {
+			                  if (file_exists('uploads/' . $_FILES['file']['name'])) {
+			                      echo 'File already exists : uploads/' . $_FILES['file']['name'];
+			                  } else {
+			                      $this->load->library('upload', $config);
+			                      if (!$this->upload->do_upload('file')) {
+			                          echo $this->upload->display_errors();
+			                      } else {
+			                          echo 'File successfully uploaded : uploads/' . $_FILES['file']['name'];
+																redirect(base_url('index.php/createissue/insert'));
+			                      }
+			                  }
+			              }
+			          } else {
+			              echo 'Please choose a file';
+									}
+	}
+
 	public function insert()
 	{
 		 $this->getValue();
@@ -76,9 +107,6 @@ class Createissue extends MY_Controller {
 
 		$this->insertArr['issue_status'] = 'PENDING';
 		$this->insertArr['isActive'] = 1;
-
-
-
 
 	}
 

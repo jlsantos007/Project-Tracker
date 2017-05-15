@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 if(!function_exists('loopDropDownItem'))
@@ -20,7 +20,7 @@ if(!function_exists('input_builder'))
 	  {
 	  	echo '<input type="hidden" name="' . $arr['name'] .'" id="'. $arr['name'] . '" value="' . $arr['val'] . '" />';
 	  }
-       
+
         echo '<p>' . $label .':&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>';
 
        if(!empty($arr))

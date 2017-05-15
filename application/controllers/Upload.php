@@ -26,7 +26,7 @@
             );
             $this->load->library('upload', $config);
             if($this->upload->do_upload()){
-            redirect(base_url('index.php/home'));
+            redirect(base_url('index.php/createissue/insert'));
             }
         }
     }

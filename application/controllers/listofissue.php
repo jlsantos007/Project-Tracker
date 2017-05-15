@@ -37,17 +37,11 @@ class Listofissue extends MY_Controller {
 		$this->render('body/issues');
 	}
 
-
-
-
 	public function history($id)
 	{
 		$var = $this->recursive($id, $this->dataHtml);
 		$this->load->library('history', $var);
 	}
-
-
-
 
 	private function recursive($id, &$arr)
 	{
@@ -64,6 +58,25 @@ class Listofissue extends MY_Controller {
 
 	   }
 
+	}
+
+	public function claim()
+	{
+		if($this->verify($this->input->post('issue')))
+		{
+			$bool = $this->themodeloftruth->update($this->input->post('issue'), 'issue_tbl');
+		}
+		else
+		{
+			echo "ERROR";
+		}
+	}
+
+
+
+	private function verify($id)
+	{
+		return ($this->themodeloftruth->verify($id) > 0) ? FALSE : TRUE;
 	}
 
 

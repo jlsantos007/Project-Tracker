@@ -10,13 +10,11 @@ class Main extends  MY_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('themodeloftruth');
-		$this->load->library('form_validation');
 	}
 
 	public function index()
 	{
 		$this->add_script('public/js/main.js');
-		$this->add_script('public/wikiquote-api.js');
 		$this->render('body/mainview');
 	}
 
@@ -48,14 +46,15 @@ class Main extends  MY_Controller {
 
 	public function register()
 	{
-				 $this->form_validation->set_rules('firstname','FirstName','required');
-				 $this->form_validation->set_rules('lastname','LastName','required');
-				 $this->form_validation->set_rules('username','Username','required|callback_check_username_exists');
-				 $this->form_validation->set_rules('password','Password','required');
-				 $this->form_validation->set_rules('password2','Confirm Password','matches[password]');
+
+				$this->form_validation->set_rules('firstname','FirstName','required');
+				$this->form_validation->set_rules('lastname','LastName','required');
+				$this->form_validation->set_rules('username','Username','required|callback_check_username_exists');
+				$this->form_validation->set_rules('password','Password','required');
+				$this->form_validation->set_rules('password2','Confirm Password','matches[password]');
 
 
-				$firstname  		= $this->input->post('firstname');
+				$firstname  	= $this->input->post('firstname');
 				$lastname       = $this->input->post('lastname');
 				$username       = $this->input->post('username');
 				$git_repo_type 	= $this->input->post('git_repo_type');
@@ -86,18 +85,20 @@ class Main extends  MY_Controller {
 					$qa_type_id           = "2";
 
 					$approve_issue_access = "1";
-
-
 				}
 
 
 			if($this->form_validation->run() === FALSE)
 			{
 
+
+				echo "FALSE";
+
 			} else{
 
 			$this->themodeloftruth->register($firstname,$lastname,$username,$git_repo_type,$access_type,$password,$qa_type_id,$approve_issue_access);
-			redirect(base_url('index.php/main'));
+			$this->load->view('mainview');
+				echo "TRUE";
 
 			}
 
@@ -105,15 +106,15 @@ class Main extends  MY_Controller {
 	}
 
 	function check_username_exists($username){
-			$this->form_validation->set_message('check_username_exists', 'Username already used!');
+		$this->form_validation->set_message('check_username_exists', 'Username already used!');
 
-			if($this->themodeloftruth->check_username_exists($username)){
-				return true;
-			}else{
-				return false;
-			}
-
+		if($this->themodeloftruth->check_username_exists($username)){
+			return true;
+		}else{
+			return false;
 		}
+
+	}
 
 
 	public function logout()

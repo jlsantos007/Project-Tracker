@@ -34,39 +34,10 @@ class Cart extends MY_Controller {
 		if($this->verify($this->input->post('issue')))
 		{
 			$bool = $this->themodeloftruth->update($this->input->post('issue'), 'issue_tbl');
-			 if($bool)
-		     {
-		     	$this->unsetData($this->input->post('issue'));
-		     	if($this->session->userdata('cart'))
-		     	{
-		     		$count = count($this->countCoockie());
-		     		echo $count;
-		     	}
-		     	else
-		     	{
-		     		echo 0;
-		     	}
-			  	
-			    
-		     }
-		     else
-		    {
-		    	echo 'error';
-		    }
-		
 		}
 		else
 		{
-			$this->unsetData($this->input->post('issue'));
-			if($this->session->userdata('cart'))
-		     	{
-		     		$count = count($this->countCoockie());
-		     		echo $count;
-		     	}
-		     	else
-		     	{
-		     		echo 0;
-		     	}
+			echo "ERROR";
 		}
 	}
 
@@ -98,8 +69,8 @@ class Cart extends MY_Controller {
 		}
 
 		$this->session->unset_userdata('cart');
-		
-		
+
+
 	}
 
 }

@@ -8,32 +8,11 @@ $(function(){
 		return false;
 	});
 
-
 	$(".hidePrepend").click(function(event) {
 		/* Act on the event */
 		var yes = $(this).closest('div').next().find('div');
 		$(yes).find("div").not(":last-child").remove();
 	});
-
-
-	$(".cart").click(function(){
-		var id = $(this).attr('data-raw');
-		var self = $(this);
-		 $.ajax({
-		 	   type : "POST",
-		 	   url  : $("base").attr('href') + "index.php/listofissue/addCoockiedata",
-		 	   data : {cartid : id},
-		 	success : function(data){
-		 			$("#badge").text(data);
-		 			self.closest('div').parent().parent().parent().parent().parent().parent().hide();
-		 	},
-		 	error : function(){
-
-		 	}
-		});
-		return false;
-	});
-
 
 	  $(".finish").click(function(){
 			var id = $(this).attr('data-raw');
@@ -99,6 +78,26 @@ $(function(){
 
 			}
 			});
+		});
+
+		$(".claim").click(function(){
+			var id = $(this).attr('data-raw');
+			var self = $(this);
+				$.ajax({
+						 type : "POST",
+						 url  : $("base").attr('href') + "index.php/listofissue/claim",
+						 data : { issue : id },
+					success : function(data){
+						if(data == "success")
+						{
+						self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+						}
+					},
+					error  : function(){
+
+				}
+				});
+
 		});
 
 });
