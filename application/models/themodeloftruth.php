@@ -103,7 +103,6 @@ class Themodeloftruth extends CI_Model {
 		return $temp;
 	}
 
-
 	function updateisActive($arr = array(), $table, $con = array())
 	{
 		$this->db->set($arr);
@@ -114,6 +113,28 @@ class Themodeloftruth extends CI_Model {
 		}
 		$this->db->update($table);
 	}
+
+	// function updateCurrent($arr = array(), $table, $con = array())
+	// {
+	// 	$this->db->set($arr);
+	// 	foreach ($con as $key => $value)
+	// 	{
+	// 		# code...
+	// 		$this->db->where($key, $value);
+	// 	}
+	// 	$this->db->update($table);
+	// }
+	//
+	// function updateBacklog($arr = array(), $table, $con = array())
+	// {
+	// 	$this->db->set($arr);
+	// 	foreach ($con as $key => $value)
+	// 	{
+	// 		# code...
+	// 		$this->db->where($key, $value);
+	// 	}
+	// 	$this->db->update($table);
+	// }
 
 
 	function generalSelect($id, $table)
@@ -144,8 +165,6 @@ class Themodeloftruth extends CI_Model {
 						->get('issue_tbl')
 						->result();
 	}
-
-
 
 	function verify($id)
 	{

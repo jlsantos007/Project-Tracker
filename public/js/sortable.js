@@ -12,11 +12,47 @@
     	/* Act on the event */
     	$(this).closest("div").parent().next().find("p").find("span").text($(this).text());
     	obj[$(this).attr('data-index')] = $(this).attr('data-id');
-    	return false;
+			$(".menus0").hide();
+			$(".menus1").hide();
+			$(".menus2").hide();
+			$(".menus3").hide();
+			$(".menus4").hide();
+			$(".menus5").hide();
+			$(".menus6").hide();
+			return false;
     });
 
+		$(".drop0").click(function(){
+			$(".menus0").show();
+		});
 
-    $(".btnsave").click(function(){
+		$(".drop1").click(function(){
+			$(".menus1").show();
+		});
+
+		$(".drop2").click(function(){
+			$(".menus2").show();
+		});
+
+		$(".drop3").click(function(){
+			$(".menus3").show();
+		});
+
+		$(".drop4").click(function(){
+			$(".menus4").show();
+		});
+
+		$(".drop5").click(function(){
+			$(".menus5").show();
+		});
+
+		$(".drop6").click(function(){
+			$(".menus6").show();
+		});
+
+
+
+    $(".save").click(function(){
         if(jQuery.isEmptyObject(obj))
         {
             var arr = ['assign', 'modules_tbl_id', 'qa_type_id', 'git_repo_id', 'platform_type_id', 'priority_level', 'issue_type_id'];
@@ -37,16 +73,18 @@
     		data    : obj,
     		success : function(data){
     				eraser();
-            console.log(data);
+            alert('Data Saved');
+						$('#myModals').modal('toggle');
     		},
     		error   : function(){
-    			console.log("error");
+    				console.log("error");
+						alert('Data Saved Error');
     		}
     	});
         return false;
     });
 
-		$(".btnsave").click(function(){
+		$(".save").click(function(){
 			var file_data = $('#file').prop('files')[0];
       var form_data = new FormData();
       form_data.append('file', file_data);
@@ -67,9 +105,34 @@
       });
 		});
 
-    $(".btncancel").click(function(){
+    $(".cancel").click(function(){
     	eraser();
     	return false;
+    });
+
+		$(".close").click(function(){
+			eraser();
+		});
+
+		$(".addModuleGitRepo").click(function(){
+			obj['module'] 	= $("#addModule").val();
+    	obj['gitRepo']  = $("#addGitRepo").val();
+
+    	$.ajax({
+    		type    : "POST",
+    		url     : $("base").attr('href') + "index.php/home/insertModuleRepo",
+    		data    : obj,
+    		success : function(data){
+    				eraser();
+            alert('Data Saved');
+						$('#myModalx').modal('toggle');
+    		},
+    		error   : function(){
+    				console.log("error");
+						alert('Data Saved Error');
+    		}
+    	});
+        return false;
     });
 
   });
@@ -95,6 +158,6 @@
 		$("#form3").val(" ");
     $("#approved").val(" ");
     $("#track_id").val(" ");
-		$("#image").val(" ");
+		$("#image").val("");
 
     }

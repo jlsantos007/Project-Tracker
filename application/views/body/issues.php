@@ -15,6 +15,14 @@ $this->load->view('_partials/navbar', $navbar);
                 <!--Panel 1-->
                 <div class="tab-pane fade in show active" id="panel5" role="tabpanel" style="margin-top: -12px; margin-right: 12px; padding: 10px">
                     <br>
+                    <?php if($this->session->userdata('access_type') == 0): ?>
+                    <select name="filter1" class="filter">
+                      <option value="" disabled selected style="display: none;">Filter By</option>
+                      <option id="filter" value="DONE">DONE</option>
+                      <option id="filter1" value="PENDING">PENDING</option>
+                    </select>
+                    <?php endif ?>
+                    
                        <!-- Panel trello -->
                         <div class="card text-center">
                             <div class="card-header default-color-dark white-text" style="background-color: #1CB2CB !important;">

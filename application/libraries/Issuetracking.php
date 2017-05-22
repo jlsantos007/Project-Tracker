@@ -110,6 +110,11 @@
 				return FALSE;
 			}
 
+			if($val == 'priority_color')
+			{
+				return FALSE;
+			}
+
 			if($val == 'issue_status')
 			{
 				return FALSE;
@@ -151,11 +156,14 @@
 				return FALSE;
 			}
 
+			if($val == 'current_backlog')
+			{
+				return FALSE;
+			}
+
 		return TRUE;
 
 		}
-
-
 
 		private function arrange($data)
 		{
@@ -173,8 +181,6 @@
 				{
 					$d[$i] = $this->common($key, $value);
 				}
-
-
 
 				$i++;
 			}

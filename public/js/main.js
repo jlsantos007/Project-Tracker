@@ -45,24 +45,19 @@ $(function(){
 			 console.log(data);
 			 if($.trim($('#firstname').val()) == '' || $.trim($('#lastname').val()) == '' || $.trim($('#uname').val()) == '' || $.trim($('#gitrepo').val()) == ''){
 				 alert('Please fill out the empty fields');
-				 $('#myModal').modal('show');
 			 }
 			 else if ($.trim($('#atype').val()) == '' || $.trim($('#pass').val()) == '' || $.trim($('#pass2').val()) == '') {
 				 alert('Please fill out the empty fields');
-				 $('#myModal').modal('show');
 			 }
 			 else if (obj['password'] != obj['password2']) {
 				 alert("Password Not Match");
-				 $('#myModal').modal('show');
 			 }
+			 $('#myModal').modal('toggle');
 			 },
 			 error : function(){
 			 console.log('error');
 			 }
-
-
 		});
-
 	});
 });
 

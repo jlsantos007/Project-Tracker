@@ -38,14 +38,6 @@
 			 		'DONE' AND assigned_to = " .
 			 		$this->CI->session->userdata('id');
 			}
-			else if($this->boolChecker == 2)
-			{
-
-			}
-			else
-			{
-
-			}
 
 			if(!empty($sql))
 			{
@@ -58,6 +50,85 @@
 
 		}
 
+		public function filterDone()
+		{
+			$sql = array();
+			if($this->boolChecker == 0)
+			{
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+					'DONE'";
+			}
+
+			if(!empty($sql))
+			{
+				$this->fetch($sql);
+			}
+
+			return FALSE;
+		}
+
+		public function pending()
+		{
+			$sql = array();
+			if($this->boolChecker == 0)
+			{
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+			 		'PENDING'";
+			}
+
+			if(!empty($sql))
+			{
+				$this->fetch($sql);
+			}
+
+			return FALSE;
+		}
+
+		// public function filterCurrent()
+		// {
+		// 	$sql = array();
+		// 	if($this->boolChecker == 1)
+		// 	{
+		// 		$sql[0] = "SELECT * FROM issue_tbl WHERE current_backlog = 1";
+		// 	}
+		//
+		// 	elseif ($this->boolChecker == 2) {
+		// 		$sql[0] = "SELECT * FROM issue_tbl WHERE current_backlog = 1";
+		// 	}
+		// 	elseif ($this->boolChecker == 3) {
+		// 		$sql[0] = "SELECT * FROM issue_tbl WHERE current_backlog = 1";
+		// 	}
+		//
+		// 	if(!empty($sql))
+		// 	{
+		// 		$this->fetch($sql);
+		// 	}
+		//
+		// 	return FALSE;
+		// }
+		//
+		// public function filterBacklog()
+		// {
+		// 	$sql = array();
+		// 	if($this->boolChecker == 1)
+		// 	{
+		// 		$sql[0] = "SELECT * FROM issue_tbl WHERE current_backlog = 0";
+		// 	}
+		//
+		// 	elseif ($this->boolChecker == 2) {
+		// 		$sql[0] = "SELECT * FROM issue_tbl WHERE current_backlog = 0";
+		// 	}
+		// 	elseif ($this->boolChecker == 3) {
+		// 		$sql[0] = "SELECT * FROM issue_tbl WHERE current_backlog = 0";
+		// 	}
+		//
+		// 	if(!empty($sql))
+		// 	{
+		// 		$this->fetch($sql);
+		// 	}
+		//
+		// 	return FALSE;
+		// }
 
 		public function backlog()
 		{
@@ -117,7 +188,7 @@
 			}
 			else
 			{
-				$sql[0] = "SELECT * FROM issue_tbl";
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status = 'DONE'";
 			}
 
 

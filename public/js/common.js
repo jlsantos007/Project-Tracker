@@ -48,7 +48,7 @@
      			break;
 
         case "Dev" :
-        window.location = $("base").attr('href') + "index.php/createissue/createWithTrackId/" + id;
+        window.location = $("base").attr('href') + "index.php/home/createWithTrackId/" + id;
         keme.hide();
         return false;
       break;

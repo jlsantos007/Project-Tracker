@@ -16,6 +16,22 @@ class Listofissue extends MY_Controller {
 
 	public function index()
 	{
+		$this->add_script('public/js/sortable.js');
+		$this->load->library('dropdown');
+		$var = $this->dropdown->getArr();
+
+		$this->addmViewData(array('tables' => $var));
+		$this->addmViewData(array('labels' => array(
+													'Assigned to',
+													'Module Type',
+													'QA Type',
+													'Git Repository',
+													'Platform type',
+													'Priority Level',
+													'Issue Type'
+												  ))
+						   						  );
+
 		$this->load->library('querybuilder', array( 'access' =>$this->session->userdata('access_type')));
 		$this->querybuilder->listofissue();
 
@@ -72,7 +88,31 @@ class Listofissue extends MY_Controller {
 		}
 	}
 
-
+	// public function currents()
+	// {
+	// 	if($this->verify($this->input->post('issue')))
+	// 	{
+	// 		$bool = $this->themodeloftruth->update($this->input->post('issue'), 'issue_tbl');
+	// 		$this->themodeloftruth->updateCurrent(array('current_backlog' => 1), 'issue_tbl', array('id' => $this->input->post('issue')));
+	// 	}
+	// 	else
+	// 	{
+	// 		echo "ERROR";
+	// 	}
+	// }
+	//
+	// public function backlogs($id)
+	// {
+	// 	if($this->verify($this->input->post('issue')))
+	// 	{
+	// 		$bool = $this->themodeloftruth->update($this->input->post('issue'), 'issue_tbl');
+	// 		$this->themodeloftruth->updateBacklog(array('current_backlog' => 0), 'issue_tbl', array('id' => $this->input->post('issue')));
+	// 	}
+	// 	else
+	// 	{
+	// 		echo "ERROR";
+	// 	}
+	// }
 
 	private function verify($id)
 	{

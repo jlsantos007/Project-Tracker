@@ -54,7 +54,7 @@ class Main extends  MY_Controller {
 				$this->form_validation->set_rules('password2','Confirm Password','matches[password]');
 
 
-				$firstname  	= $this->input->post('firstname');
+				$firstname  	  = $this->input->post('firstname');
 				$lastname       = $this->input->post('lastname');
 				$username       = $this->input->post('username');
 				$git_repo_type 	= $this->input->post('git_repo_type');

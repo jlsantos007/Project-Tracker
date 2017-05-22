@@ -61,6 +61,28 @@ $(function(){
 			});
 		});
 
+		$('select').change(function(){
+			var optionSelected = $(this).find("option:selected");
+			if (optionSelected.val() == "PENDING") {
+				window.location = $("base").attr('href') + "index.php/common/pending";
+			}
+			else {
+				window.location = $("base").attr('href') + "index.php/common/filterDone";
+			}
+			return false;
+		});
+
+		// $('select').change(function(){
+		// 	var optionSelected = $(this).find("option:selected");
+		// 	if (optionSelected.val() == "CURRENT") {
+		// 		window.location = $("base").attr('href') + "index.php/common/filterCurrent";
+		// 	}
+		// 	else {
+		// 		window.location = $("base").attr('href') + "index.php/common/filterBacklog";
+		// 	}
+		// 	return false;
+		// });
+
 		$(".done").click(function(){
 			var id = $(this).attr('data-raw');
 			var self = $(this);
@@ -97,7 +119,43 @@ $(function(){
 
 				}
 				});
-
 		});
 
+		// $(".current").click(function(){
+		// 	var id = $(this).attr('data-raw');
+		// 	var self = $(this);
+		// 		$.ajax({
+		// 				 type : "POST",
+		// 				 url  : $("base").attr('href') + "index.php/listofissue/currents",
+		// 				 data : { issue : id },
+		// 			success : function(data){
+		// 				if(data == "success")
+		// 				{
+		// 				self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+		// 				}
+		// 			},
+		// 			error  : function(){
+		//
+		// 		}
+		// 		});
+		// });
+		//
+		// $(".backlog").click(function(){
+		// 	var id = $(this).attr('data-raw');
+		// 	var self = $(this);
+		// 		$.ajax({
+		// 				 type : "POST",
+		// 				 url  : $("base").attr('href') + "index.php/listofissue/backlogs",
+		// 				 data : { issue : id },
+		// 			success : function(data){
+		// 				if(data == "success")
+		// 				{
+		// 				self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+		// 				}
+		// 			},
+		// 			error  : function(){
+		//
+		// 		}
+		// 		});
+		// });
 });
