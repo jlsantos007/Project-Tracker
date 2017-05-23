@@ -86,6 +86,7 @@ class Createissue extends MY_Controller {
 		$this->insertArr['issue_type_id']    = $this->input->post('6');
 		$this->insertArr['priority_level']   = $this->input->post('5');
 		$this->insertArr['date_created']     = date('Y-m-d');
+		$this->insertArr['track_issue_id']  = $this->input->post('ids');
 
 		 if($this->input->post('0'))
 		 {
@@ -105,10 +106,7 @@ class Createissue extends MY_Controller {
 		 elseif ($this->input->post('5') == 3) {
 		 	$this->insertArr['priority_color']	= "Orange";
 		 }
-		 if($this->input->post('issue_id'))
-		 {
-			 $this->insertArr['track_issue_id']  = $this->input->post('issue_id');
-		 }
+
 		 if($this->input->post('approved'))
 		 {
 			 $this->insertArr['issue_approved_by_id']  = $this->input->post('approved');

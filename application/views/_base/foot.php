@@ -20,21 +20,15 @@
 								 <h4 class="modal-title">Register</h4>
 						 </div>
 						 <div class="modal-body">
-							 <?php echo validation_errors();?>
-							 <?php
-							 form_open(base_url('index.php/main'));
-							 ?>
 								 <form class="form-horizontal">
 									 <div class="md-form">
-											 <input type="text" class="form-control" id="firstname">
+											 <input type="text" class="form-control" id="firstname" required>
 											 <label for="firstname">Enter Firstname:</label>
-											 <?php echo form_error('firstname', 'Firstname', 'required'); ?>
 									 </div>
 
 									 <div class="md-form">
-											 <input type="text" class="form-control" id="lastname" name="lastname">
+											 <input type="text" class="form-control" id="lastname" name="lastname" required>
 											 <label for="lastname">Enter Lastname:</label>
-											 <?php echo form_error('lastname', '<div class="error">', '</div>'); ?>
 									 </div>
 
 
@@ -59,27 +53,23 @@
 
 
 									 <div class="md-form">
-											 <input type="text" class="form-control" id="uname">
+											 <input type="text" class="form-control" id="uname" required>
 											 <label for="uname">Enter Username:</label>
-											 <?php echo form_error('username', '<div class="error">', '</div>'); ?>
 									 </div>
 
 									 <div class="md-form">
-											 <input type="password" class="form-control" id="pass">
+											 <input type="password" class="form-control" id="pass" required>
 											 <label for="pass">Enter Password:</label>
-											 <?php echo form_error('password', '<div class="error">', '</div>'); ?>
 									 </div>
 
 									 <div class="md-form">
-											 <input type="password" class="form-control" id="pass2">
+											 <input type="password" class="form-control" id="pass2" required>
 											 <label for="pass2">Confirm Password:</label>
-											 <?php echo form_error('password2', '<div class="error">', '</div>'); ?>
 									 </div>
 
 									 <div class="form-group">
 											 <button type="submit" id="register" class="btn block btn-primary btn-block">Submit</button>
 									 </div>
-									 <?php echo form_close(); ?>
 								 </form>
 						 </div>
 				 </div>
@@ -104,7 +94,7 @@
                       <label for="form3">Issue Title:</label>
                   </div>
 
-                 <!-- dorpdowns -->
+                 <!-- dropdowns -->
                    <?php
                     $i = 0;
                     foreach ($userdata['tables'] as $key => $value):
@@ -151,14 +141,22 @@
 		             <div class="modal-body">
 		                 <form class="form-horizontal">
 
-											 <div class="md-form">
-												 <input type="text" class="form-control" id="addModule">
-												 <label for="addModule">Module:</label>
+											 <div class="form-group">
+													 <select id="moduleGit" class="form-control moduleGit">
+													 <option value="" disabled selected style="display: none;">Please Choose</option>
+													 <option id="modules" value="modules">Module</option>
+													 <option id="gitRepo" value="gitRepo">Git Repo</option>
+													 </select>
 											 </div>
 
 											 <div class="md-form">
-												 <input type="text" class="form-control" id="addGitRepo">
-												 <label for="addGitRepo">Git Repo:</label>
+												 <input type="text" class="form-control" id="addModule" required>
+												 <label id="labelModule" for="addModule">Module:</label>
+											 </div>
+
+											 <div class="md-form">
+												 <input type="text" class="form-control" id="addGitRepo" required>
+												 <label id="labelGit" for="addGitRepo">Git Repo:</label>
 											 </div>
 
 		                   <div>
@@ -171,5 +169,11 @@
 		         </div>
 		       </div>
 		     </div>
+
+<script>
+$(document).ready(function(){
+	$('#myIssue').modal();
+});
+</script>
  </body>
  </html>

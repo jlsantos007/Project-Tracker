@@ -39,7 +39,6 @@
 
 					$temp[$key] = $this->CI->themodeloftruth->getsetValue($this->getTable($key), $value);
 
-
 				}
 
 			}

@@ -3,8 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends MY_Controller {
 
-	private $insertModule  = array();
-	private $insertGitRepo = array();
+	private $insert = array();
 
 	public function __construct()
 	{
@@ -37,15 +36,13 @@ class Home extends MY_Controller {
 	public function insertModuleRepo()
 	{
 		$this->getValueModuleRepo();
-		$this->themodeloftruth->insertdata('modules_tbl', $this->insertModule);
-		$this->themodeloftruth->insertdata('git_repo_tbl', $this->insertGitRepo);
+		$this->themodeloftruth->insertdata($this->input->post('option'), $this->insert);
 		echo 'success';
 	}
 
 	public function getValueModuleRepo()
 	{
-		$this->insertModule['name']   =  $this->input->post('module');
-		$this->insertGitRepo['name']  =  $this->input->post('gitRepo');
+		$this->insert['name']   =  $this->input->post('input');
 	}
 }
 
