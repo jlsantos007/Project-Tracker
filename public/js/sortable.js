@@ -143,11 +143,22 @@
 				success : function(data){
 						eraser();
 						swal("Issue Saved!", "Issue has been saved!", "success");
-						$('#myModals').modal('toggle');
+						$('#myIssue').modal('toggle');
 				},
 				error   : function(){
 						console.log("error");
-						alert('Data Saved Error');
+						$('#myIssue').modal('toggle');
+						swal({
+							title 						 : "Saved Error!",
+							text  					   : "Issue has not been saved!",
+							type  						 : "error",
+							confirmButtonColor : "#DD6B55",
+							confirmButtonText  : "OK",
+							closeOnConfirm		 : true
+							},
+							function(){
+								$('#myIssue').modal('show');
+						});
 				}
 			});
 				return false;
@@ -201,22 +212,24 @@
 						data    : {option : optionSelected, input : input},
 						success : function(data){
 								eraser();
-								alert('Data Saved');
+								swal("Module Saved!", "Module has been saved!", "success");
 								$('#myModalx').modal('toggle');
+								$("#addModule").hide();
+								$("#labelModule").hide();
 						},
 						error : function(){
 								console.log("error");
-								$('#myModals').modal('toggle');
+								$('#myModalx').modal('toggle');
 								swal({
 									title 						 : "Saved Error!",
-									text  					   : "Issue has not been saved!",
+									text  					   : "Module has not been saved!",
 									type  						 : "error",
 									confirmButtonColor : "#DD6B55",
 									confirmButtonText  : "OK",
 									closeOnConfirm		 : true
 									},
 									function(){
-										$('#myModals').modal('show');
+										$('#myModalx').modal('show');
 								});
 						}
 					});
@@ -238,12 +251,25 @@
 						data    : {option : optionSelected, input : input},
 						success : function(data){
 								eraser();
-								alert('Data Saved');
+								swal("Git Repo Saved!", "Git Repo has been saved!", "success");
 								$('#myModalx').modal('toggle');
+								$("#addGitRepo").hide();
+								$("#labelGit").hide();
 						},
 						error : function(){
 								console.log("error");
-								alert('Data Saved Error');
+								$('#myModalx').modal('toggle');
+								swal({
+									title 						 : "Saved Error!",
+									text  					   : "Git Repo has not been saved!",
+									type  						 : "error",
+									confirmButtonColor : "#DD6B55",
+									confirmButtonText  : "OK",
+									closeOnConfirm		 : true
+									},
+									function(){
+										$('#myModalx').modal('show');
+								});
 						}
 					});
 						return false;
@@ -282,5 +308,6 @@
     $("#approved").val(" ");
     $("#track_id").val(" ");
 		$("#image").val("");
-
+		$("#addModule").val("");
+		$("#addGitRepo").val("");
     }

@@ -101,8 +101,6 @@ class Main extends  MY_Controller {
 				echo "TRUE";
 
 			}
-
-
 	}
 
 	function check_username_exists($username){

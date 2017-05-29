@@ -1,6 +1,4 @@
 <?php
-
-
 if(!function_exists('loopDropDownItem'))
 {
 	function loopDropDownItem($array, $index){
@@ -10,7 +8,6 @@ if(!function_exists('loopDropDownItem'))
 		}
 	}
 }
-
 
 if(!function_exists('input_builder'))
 {
@@ -33,5 +30,4 @@ if(!function_exists('input_builder'))
        echo '</span></p>';
 	}
 }
-
 ?>

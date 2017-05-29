@@ -26,7 +26,7 @@ $(function(){
 			});
 	});
 
-	$("#register").click(function(){
+	$(".register").click(function(){
 		var obj = {
 					  firstname     : $("#firstname").val(),
 				    lastname      : $("#lastname").val(),
@@ -37,21 +37,22 @@ $(function(){
 				    password2     : $("#pass2").val()
 				  };
 
+				//  if($.trim($('#firstname').val()) == '' || $.trim($('#lastname').val()) == '' || $.trim($('#uname').val()) == '' || $.trim($('#gitrepo').val()) == ''){
+	 		// 		 console.log('Please fill out the empty fields');
+				//   }
+				//   else if ($.trim($('#atype').val()) == '' || $.trim($('#pass').val()) == '' || $.trim($('#pass2').val()) == '') {
+	 		// 		 console.log('Please fill out the empty fields');
+				//   }
+				//   else if (obj['password'] != obj['password2']) {
+	 		// 		 console.log("Password Not Match");
+				//   }
+
 		$.ajax({
 				type : "POST",
 				 url : $("base").attr('href') + "index.php/main/register",
 				data : obj,
 			 success : function(data){
 			 console.log(data);
-			 if($.trim($('#firstname').val()) == '' || $.trim($('#lastname').val()) == '' || $.trim($('#uname').val()) == '' || $.trim($('#gitrepo').val()) == ''){
-				 console.log('Please fill out the empty fields');
-			 }
-			 else if ($.trim($('#atype').val()) == '' || $.trim($('#pass').val()) == '' || $.trim($('#pass2').val()) == '') {
-				 console.log('Please fill out the empty fields');
-			 }
-			 else if (obj['password'] != obj['password2']) {
-				 console.log("Password Not Match");
-			 }
 			 },
 			 error : function(){
 			 console.log('error');

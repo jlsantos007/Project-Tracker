@@ -84,11 +84,11 @@ class Themodeloftruth extends CI_Model {
 		return $arr;
 	}
 
-	function record_count()
-	{
-
-
-	}
+	// function record_count()
+	// {
+	//
+	//
+	// }
 
 	function fetch_issues($sql = array())
 	{

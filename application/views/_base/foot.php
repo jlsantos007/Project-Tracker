@@ -45,9 +45,14 @@ n/n k j<?php
 									 <div class="form-group">
 											 <select id="gitrepo" class="form-control">
 												 <option value="" disabled selected style="display: none;">Please Choose GitRepo</option>
-												 <option id="1" value="1">K12</option>
-												 <option id="2" value="2">College</option>
-												 <option id="3" value="3">K12_int</option>
+												 <<?php
+												 $query = $this->db->get('git_repo_tbl');
+
+												 foreach ($query->result() as $row)
+												 {
+													 echo '<option id = "'.$row->id.'" value="'.$row->id.'">'.$row->name.'</option>';
+												 }
+												 ?>
 									 	   </select>
 									 </div>
 
@@ -78,7 +83,7 @@ n/n k j<?php
 									 </div>
 
 									 <div class="form-group">
-											 <button type="submit" id="register" class="btn btn-primary pull-right">Submit</button>
+											 <button type="submit" id="register" class="btn btn-primary register pull-right">Submit</button>
 											 <button type="submit" id="cancel" class="btn btn-danger pull-right">Cancel</button>
 									 </div>
 
@@ -155,7 +160,7 @@ n/n k j<?php
 
 											 <div class="form-group">
 													 <select id="moduleGit" class="form-control moduleGit">
-													 <option value="" disabled selected style="display: none;">Please Choose</option>
+													 <option id="choose" value="" disabled selected style="display: none;">Please Choose</option>
 													 <option id="modules" value="modules">Module</option>
 													 <option id="gitRepo" value="gitRepo">Git Repo</option>
 													 </select>

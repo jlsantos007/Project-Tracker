@@ -9,12 +9,7 @@ $(function(){
 	});
 
 	$(".nullHistory").click(function(){
-		$("#myModalh").modal();
-	});
-
-	$(".exit").click(function(){
-		$('#myModalh').hide();
-		$('.modal-backdrop').hide();
+		swal("No History Exist!", "There is no existing issue/s!", "warning");
 	});
 
 	$(".hidePrepend").click(function(event) {

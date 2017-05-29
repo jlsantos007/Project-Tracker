@@ -1,5 +1,4 @@
 <?php
-
 	/**
 	*
 	*/
@@ -10,7 +9,7 @@
 		private $CI;
 		private $tables = array(
 								 'user_tbl',
-							     'modules_tbl',
+							   'modules_tbl',
 								 'qa_type_tbl',
 								 'git_repo_tbl',
 								 'platform_type',
@@ -54,24 +53,5 @@
 		{
 			return $this->mData;
 		}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	}
-
-
-
-
+}
  ?>
