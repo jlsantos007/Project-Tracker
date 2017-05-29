@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 01, 2017 at 04:09 AM
--- Server version: 10.1.16-MariaDB
--- PHP Version: 5.6.24
+-- Generation Time: May 29, 2017 at 05:51 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -75,8 +75,8 @@ CREATE TABLE `git_repo_tbl` (
 --
 
 INSERT INTO `git_repo_tbl` (`id`, `name`) VALUES
-(1, 'kt12'),
-(2, 'collage'),
+(1, 'kto12'),
+(2, 'college'),
 (3, 'kto12_int');
 
 -- --------------------------------------------------------
@@ -89,6 +89,7 @@ CREATE TABLE `issue_tbl` (
   `id` int(11) NOT NULL,
   `issue_title` varchar(50) NOT NULL,
   `issue_desc` varchar(255) NOT NULL,
+  `image` varchar(50) DEFAULT NULL,
   `created_by` int(11) DEFAULT NULL,
   `assigned_to` int(11) DEFAULT NULL,
   `modules_tbl_id` int(11) NOT NULL,
@@ -98,21 +99,15 @@ CREATE TABLE `issue_tbl` (
   `track_issue_id` int(11) DEFAULT NULL,
   `issue_type_id` int(11) NOT NULL,
   `priority_level` int(11) NOT NULL,
-  `issue_status` varchar(100) DEFAULT NULL,
+  `priority_color` varchar(50) DEFAULT NULL,
+  `issue_status` enum('DONE','PENDING') DEFAULT NULL,
+  `assigned_qa` int(11) DEFAULT NULL,
+  `date_created` date DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
   `issue_approved_by_id` int(11) DEFAULT NULL,
-  `isActive` int(11) NOT NULL
+  `isActive` int(11) NOT NULL,
+  `current_backlog` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `issue_tbl`
---
-
-INSERT INTO `issue_tbl` (`id`, `issue_title`, `issue_desc`, `created_by`, `assigned_to`, `modules_tbl_id`, `qa_type_id`, `git_repo_id`, `platform_type_id`, `track_issue_id`, `issue_type_id`, `priority_level`, `issue_status`, `issue_approved_by_id`, `isActive`) VALUES
-(1, 'Object oriented issue', 'part ng scholastic record ng student , yung alert message. “[object Object]” yung nakalagay pag nag save.', NULL, 1, 1, 1, 2, 2, NULL, 1, 2, NULL, 1, 0),
-(2, 'Object oriented issue', ' levigratico@gmail.com GIT PULL GIT PULL Comments Share FileEditViewInsertFormatDataToolsAdd-onsHelpLast edit was yesterday at 11:52 PM      $%  123  Arial   10                                      tapos Forever loading animation pag nag save ng student s', NULL, 1, 1, 1, 2, 1, 1, 1, 1, NULL, 1, 0),
-(3, 'Object oriented issue', 'May forever pa din.', NULL, 1, 1, 2, 2, 2, 2, 1, 1, NULL, 1, 0),
-(4, 'Datepicker', 'dapat lahat yung date input nka datepicker yung may plugin. Hindi dpat yung default. Para kahit sa ibang browser nagwowork si date picker.', NULL, NULL, 1, 2, 2, 2, NULL, 1, 1, NULL, 1, 0),
-(5, 'Datepicker', 'Paki lagyan ng red outside glow ang input text if walang laman yung Date of Birth field sa Personal Information ng student. Double check restrictions for both EMPLOYEE AND STUDENT PROFILE', NULL, 1, 1, 2, 2, 2, 4, 1, 2, NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -142,17 +137,18 @@ INSERT INTO `issue_type` (`id`, `name`) VALUES
 
 CREATE TABLE `modules_tbl` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL,
-  `description` varchar(200) NOT NULL
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `modules_tbl`
 --
 
-INSERT INTO `modules_tbl` (`id`, `name`, `description`) VALUES
-(1, 'Module1', 'una ulit hahaha'),
-(2, 'Module3', 'asdasdasdsd');
+INSERT INTO `modules_tbl` (`id`, `name`) VALUES
+(1, 'Module1'),
+(2, 'Module2'),
+(3, 'Module3'),
+(4, 'Module4');
 
 -- --------------------------------------------------------
 
@@ -247,10 +243,8 @@ CREATE TABLE `status` (
   `date_created` datetime NOT NULL,
   `git_status` varchar(50) NOT NULL,
   `start_date` datetime NOT NULL,
-  `priority_level` int(11) NOT NULL,
   `num_of_days` int(11) NOT NULL,
   `platform_type_accts_id` int(11) NOT NULL,
-  `assigned_qa` int(11) NOT NULL,
   `qa_status` varchar(255) NOT NULL,
   `qa_comment` varchar(255) NOT NULL,
   `qa_date` datetime NOT NULL
@@ -270,7 +264,6 @@ CREATE TABLE `user_tbl` (
   `password` varchar(50) NOT NULL,
   `access_type` int(5) NOT NULL,
   `qa_type_id` int(5) DEFAULT NULL,
-  `dept_id` int(5) NOT NULL,
   `git_repo_type` int(11) DEFAULT NULL,
   `approve_issue_access` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -279,11 +272,13 @@ CREATE TABLE `user_tbl` (
 -- Dumping data for table `user_tbl`
 --
 
-INSERT INTO `user_tbl` (`id`, `firstname`, `lastname`, `username`, `password`, `access_type`, `qa_type_id`, `dept_id`, `git_repo_type`, `approve_issue_access`) VALUES
-(1, 'Levi', 'Gratico', 'levigratico', 'BEVlev13', 1, NULL, 2, 1, 0),
-(6, 'bentong', 'kamekamewave', 'kemekeme', 'BEVlev13', 2, 1, 3, 2, 0),
-(7, 'management', 'management', 'manager', 'manager', 0, NULL, 1, NULL, 1),
-(8, 'managernaqa', 'qanamanager', 'qamanager', 'qamanager', 3, 2, 1, 2, 1);
+INSERT INTO `user_tbl` (`id`, `firstname`, `lastname`, `username`, `password`, `access_type`, `qa_type_id`, `git_repo_type`, `approve_issue_access`) VALUES
+(1, 'Developer', '', 'developer', 'password', 1, NULL, 1, 0),
+(6, 'QA', '', 'qa', 'password', 2, 1, 2, 0),
+(7, 'Management', '', 'manager', 'manager', 0, NULL, NULL, 1),
+(8, 'QA/Management', '', 'qamanager', 'qamanager', 3, 2, 2, 1),
+(9, 'QA1', '', 'qa1', 'password', 2, 1, 1, 0),
+(10, 'QA2', '', 'qa2', 'password', 2, 1, 3, 0);
 
 --
 -- Indexes for dumped tables
@@ -321,7 +316,8 @@ ALTER TABLE `issue_tbl`
   ADD KEY `platform_type_id` (`platform_type_id`),
   ADD KEY `issue_type_id` (`issue_type_id`),
   ADD KEY `issue_approved_by_id` (`issue_approved_by_id`),
-  ADD KEY `priority_level` (`priority_level`);
+  ADD KEY `priority_level` (`priority_level`),
+  ADD KEY `assigned_qa` (`assigned_qa`);
 
 --
 -- Indexes for table `issue_type`
@@ -364,17 +360,14 @@ ALTER TABLE `qa_type_tbl`
 --
 ALTER TABLE `status`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `priority_level` (`priority_level`,`platform_type_accts_id`,`assigned_qa`),
-  ADD KEY `platform_type_accts_id` (`platform_type_accts_id`),
-  ADD KEY `assigned_qa` (`assigned_qa`);
+  ADD KEY `priority_level` (`platform_type_accts_id`);
 
 --
 -- Indexes for table `user_tbl`
 --
 ALTER TABLE `user_tbl`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `qa_type_id` (`qa_type_id`,`dept_id`),
-  ADD KEY `dept_id` (`dept_id`),
+  ADD KEY `qa_type_id` (`qa_type_id`),
   ADD KEY `git_repo_type` (`git_repo_type`);
 
 --
@@ -400,7 +393,7 @@ ALTER TABLE `git_repo_tbl`
 -- AUTO_INCREMENT for table `issue_tbl`
 --
 ALTER TABLE `issue_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `issue_type`
 --
@@ -410,7 +403,7 @@ ALTER TABLE `issue_type`
 -- AUTO_INCREMENT for table `modules_tbl`
 --
 ALTER TABLE `modules_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `platform_type`
 --
@@ -440,7 +433,7 @@ ALTER TABLE `status`
 -- AUTO_INCREMENT for table `user_tbl`
 --
 ALTER TABLE `user_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Constraints for dumped tables
 --
@@ -456,6 +449,7 @@ ALTER TABLE `child_module_tbl`
 --
 ALTER TABLE `issue_tbl`
   ADD CONSTRAINT `issue_tbl_ibfk_1` FOREIGN KEY (`created_by`) REFERENCES `user_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `issue_tbl_ibfk_10` FOREIGN KEY (`assigned_qa`) REFERENCES `user_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `issue_tbl_ibfk_2` FOREIGN KEY (`assigned_to`) REFERENCES `user_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `issue_tbl_ibfk_3` FOREIGN KEY (`modules_tbl_id`) REFERENCES `modules_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `issue_tbl_ibfk_4` FOREIGN KEY (`qa_type_id`) REFERENCES `qa_type_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -469,16 +463,12 @@ ALTER TABLE `issue_tbl`
 -- Constraints for table `status`
 --
 ALTER TABLE `status`
-  ADD CONSTRAINT `status_ibfk_1` FOREIGN KEY (`platform_type_accts_id`) REFERENCES `platform_type_accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `status_ibfk_2` FOREIGN KEY (`priority_level`) REFERENCES `priority_level` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `status_ibfk_3` FOREIGN KEY (`assigned_qa`) REFERENCES `user_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `status_ibfk_1` FOREIGN KEY (`platform_type_accts_id`) REFERENCES `platform_type_accounts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_tbl`
 --
 ALTER TABLE `user_tbl`
-  ADD CONSTRAINT `user_tbl_ibfk_1` FOREIGN KEY (`qa_type_id`) REFERENCES `qa_type_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_tbl_ibfk_2` FOREIGN KEY (`dept_id`) REFERENCES `departments_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `user_tbl_ibfk_3` FOREIGN KEY (`git_repo_type`) REFERENCES `git_repo_tbl` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

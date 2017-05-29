@@ -142,7 +142,7 @@
 			else if($this->boolChecker == 2)
 			{
 			 	$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
-			 		'PENDING' AND isActive = 1 AND assigned_qa = " .
+			 		'PENDING' AND isActive = 1 AND assigned_to = " .
 			 		$this->CI->session->userdata('id');
 			}
 			else
@@ -184,11 +184,11 @@
 			}
 			else if($this->boolChecker == 2)
 			{
-				$sql[0] = "SELECT * FROM issue_tbl WHERE assigned_to IS NOT NULL AND issue_status = 'DONE' AND assigned_qa IS NULL AND git_repo_id = " . $this->CI->session->userdata('git_repo_type');
+				$sql[0] = "SELECT * FROM issue_tbl WHERE assigned_to IS NOT NULL AND issue_status = 'DONE' AND isActive = 1 AND assigned_qa IS NULL AND git_repo_id = " . $this->CI->session->userdata('git_repo_type');
 			}
 			else
 			{
-				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status = 'DONE'";
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status = 'DONE' AND isActive = 1";
 			}
 
 

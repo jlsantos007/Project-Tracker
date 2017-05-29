@@ -78,12 +78,23 @@
     		data    : obj,
     		success : function(data){
     				eraser();
-            alert('Data Saved');
+            swal("Issue Saved!", "Issue has been saved!", "success");
 						$('#myModals').modal('toggle');
     		},
     		error   : function(){
     				console.log("error");
-						alert('Data Saved Error');
+						$('#myModals').modal('toggle');
+						swal({
+							title 						 : "Saved Error!",
+							text  					   : "Issue has not been saved!",
+							type  						 : "error",
+							confirmButtonColor : "#DD6B55",
+							confirmButtonText  : "OK",
+							closeOnConfirm		 : true
+							},
+							function(){
+								$('#myModals').modal('show');
+						});
     		}
     	});
         return false;
@@ -131,8 +142,8 @@
 				data    : obj,
 				success : function(data){
 						eraser();
-						alert('Data Saved');
-						$('#myIssue').modal('hide');
+						swal("Issue Saved!", "Issue has been saved!", "success");
+						$('#myModals').modal('toggle');
 				},
 				error   : function(){
 						console.log("error");
@@ -195,7 +206,18 @@
 						},
 						error : function(){
 								console.log("error");
-								alert('Data Saved Error');
+								$('#myModals').modal('toggle');
+								swal({
+									title 						 : "Saved Error!",
+									text  					   : "Issue has not been saved!",
+									type  						 : "error",
+									confirmButtonColor : "#DD6B55",
+									confirmButtonText  : "OK",
+									closeOnConfirm		 : true
+									},
+									function(){
+										$('#myModals').modal('show');
+								});
 						}
 					});
 						return false;
@@ -243,6 +265,12 @@
 					'.divpriority',
 					'.divissuetype'
 					]
+
+					var arr = ['assign', 'modules_tbl_id', 'qa_type_id', 'git_repo_id', 'platform_type_id', 'priority_level', 'issue_type_id'];
+					for(var i = 0; i < arr.length; i++)
+					{
+							obj[i] = $("#" + arr[i]).val(" ");
+					}
 
 		 for(var i = 0; i < span.length; i++)
 		 {

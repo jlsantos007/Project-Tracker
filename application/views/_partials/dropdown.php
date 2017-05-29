@@ -1,9 +1,12 @@
 <div class="btn-group pull-right">
         <a class="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-sort pull-right" aria-hidden="true"></i></a>
-		<div class="dropdown-menu">
+    <div class="dropdown-menu">
       <?php
       if (!$track_issue_id == null) {
         echo '<a class="dropdown-item history" data-raw="'.$track_issue_id.'" href="#">History</a>';
+      }
+      elseif ($track_issue_id == null) {
+        echo '<a class="dropdown-item nullHistory">History</a>';
       }
        ?>
         <?php if ($this->session->userdata('access_type') != 0): ?>

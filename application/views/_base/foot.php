@@ -1,4 +1,4 @@
-<?php
+n/n k j<?php
 
 	foreach ($scripts['foot'] as $file)
 	{
@@ -8,6 +8,16 @@
 
 
  ?>
+
+	<!--Modal History-->
+<div id="myModalh" class="modal fade" role="dialog">
+	<img class="imgWarning" src="http://100dayscss.com/codepen/alert.png" width="44" height="38" />
+	<span class="titles">Warning!</span>
+	<p class="warningHistory">The issue selected has no existing history.</p>
+	<div class="exit">Dismiss</div>
+</div>
+
+
 
  <!--Modal Add Account-->
  <div id="myModal" class="modal fade" role="dialog" style="z-index: 10000000 !important;">
@@ -68,8 +78,10 @@
 									 </div>
 
 									 <div class="form-group">
-											 <button type="submit" id="register" class="btn block btn-primary btn-block">Submit</button>
+											 <button type="submit" id="register" class="btn btn-primary pull-right">Submit</button>
+											 <button type="submit" id="cancel" class="btn btn-danger pull-right">Cancel</button>
 									 </div>
+
 								 </form>
 						 </div>
 				 </div>
@@ -175,5 +187,6 @@ $(document).ready(function(){
 	$('#myIssue').modal();
 });
 </script>
+<script src="public/js/sweetalert.min.js"></script>
  </body>
  </html>

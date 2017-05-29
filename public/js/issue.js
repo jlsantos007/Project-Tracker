@@ -8,6 +8,15 @@ $(function(){
 		return false;
 	});
 
+	$(".nullHistory").click(function(){
+		$("#myModalh").modal();
+	});
+
+	$(".exit").click(function(){
+		$('#myModalh').hide();
+		$('.modal-backdrop').hide();
+	});
+
 	$(".hidePrepend").click(function(event) {
 		/* Act on the event */
 		var yes = $(this).closest('div').next().find('div');
@@ -61,7 +70,7 @@ $(function(){
 			});
 		});
 
-		$('select').change(function(){
+		$('.filter').change(function(){
 			var optionSelected = $(this).find("option:selected");
 			if (optionSelected.val() == "PENDING") {
 				window.location = $("base").attr('href') + "index.php/common/pending";

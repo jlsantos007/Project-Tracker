@@ -22,7 +22,7 @@ $this->load->view('_partials/navbar', $navbar);
                       <option id="filter1" value="PENDING">PENDING</option>
                     </select>
                     <?php endif ?>
-                    
+
                        <!-- Panel trello -->
                         <div class="card text-center">
                             <div class="card-header default-color-dark white-text" style="background-color: #1CB2CB !important;">
