@@ -33,13 +33,13 @@ class Main extends  MY_Controller {
 		 	else
 		 	{
 		 		 //wrong password
-		 		echo '0-password';
+		 		echo '0-Password';
 		 	}
 		 }
 		 else
 		 {
 		 		// wrong username
-		 		echo '0-username';
+		 		echo '0-Username';
 		 }
 
 	}
@@ -97,7 +97,7 @@ class Main extends  MY_Controller {
 			} else{
 
 			$this->themodeloftruth->register($firstname,$lastname,$username,$git_repo_type,$access_type,$password,$qa_type_id,$approve_issue_access);
-			$this->load->view('mainview');
+			$this->render('body/mainview');
 				echo "TRUE";
 
 			}

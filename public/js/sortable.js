@@ -1,6 +1,7 @@
 
 	var obj = {};
-
+	var input;
+	var optionSelected;
 
     $( function() {
 
@@ -8,10 +9,8 @@
 
     $( "#sortable" ).disableSelection();
 
-		$("#addModule").hide();
-		$("#labelModule").hide();
-		$("#addGitRepo").hide();
-		$("#labelGit").hide();
+		$("#moduleRepo").hide();
+		$("#labelModuleRepo").hide();
 
     $(".thechoosen").click(function(event) {
     	/* Act on the event */
@@ -195,87 +194,52 @@
 		});
 
 		$('.moduleGit').change(function(){
-			var optionSelected = $(this).find("option:selected");
-			var input;
+			optionSelected = $(this).find("option:selected");
 			if (optionSelected.val() == "modules") {
-				$("#addModule").show();
-				$("#labelModule").show();
-				$("#addGitRepo").hide();
-				$("#labelGit").hide();
-				$(".addModuleGitRepo").click(function(){
-					input = $("#addModule").val();
-					optionSelected = "modules_tbl";
-
-					$.ajax({
-						type    : "POST",
-						url     : $("base").attr('href') + "index.php/home/insertModuleRepo",
-						data    : {option : optionSelected, input : input},
-						success : function(data){
-								eraser();
-								swal("Module Saved!", "Module has been saved!", "success");
-								$('#myModalx').modal('toggle');
-								$("#addModule").hide();
-								$("#labelModule").hide();
-						},
-						error : function(){
-								console.log("error");
-								$('#myModalx').modal('toggle');
-								swal({
-									title 						 : "Saved Error!",
-									text  					   : "Module has not been saved!",
-									type  						 : "error",
-									confirmButtonColor : "#DD6B55",
-									confirmButtonText  : "OK",
-									closeOnConfirm		 : true
-									},
-									function(){
-										$('#myModalx').modal('show');
-								});
-						}
-					});
-						return false;
-				});
+				jQuery("label[for='moduleRepo']").html("Module:");
+				$("#moduleRepo").show();
+				$("#labelModuleRepo").show();
+				optionSelected = "modules_tbl";
 			}
 			else if (optionSelected.val() == "gitRepo") {
-				$("#addModule").hide();
-				$("#labelModule").hide();
-				$("#addGitRepo").show();
-				$("#labelGit").show();
-				$(".addModuleGitRepo").click(function(){
-					input = $("#addGitRepo").val();
-					optionSelected = "git_repo_tbl";
-
-					$.ajax({
-						type    : "POST",
-						url     : $("base").attr('href') + "index.php/home/insertModuleRepo",
-						data    : {option : optionSelected, input : input},
-						success : function(data){
-								eraser();
-								swal("Git Repo Saved!", "Git Repo has been saved!", "success");
-								$('#myModalx').modal('toggle');
-								$("#addGitRepo").hide();
-								$("#labelGit").hide();
-						},
-						error : function(){
-								console.log("error");
-								$('#myModalx').modal('toggle');
-								swal({
-									title 						 : "Saved Error!",
-									text  					   : "Git Repo has not been saved!",
-									type  						 : "error",
-									confirmButtonColor : "#DD6B55",
-									confirmButtonText  : "OK",
-									closeOnConfirm		 : true
-									},
-									function(){
-										$('#myModalx').modal('show');
-								});
-						}
-					});
-						return false;
-				});
+				jQuery("label[for='moduleRepo']").html("Git Repo:");
+				$("#moduleRepo").show();
+				$("#labelModuleRepo").show();
+				optionSelected = "git_repo_tbl";
 			}
+		});
 
+		$(".addModuleGitRepo").click(function(){
+			input = $("#moduleRepo").val();
+
+			$.ajax({
+				type    : "POST",
+				url     : $("base").attr('href') + "index.php/home/insertModuleRepo",
+				data    : {option : optionSelected, input : input},
+				success : function(data){
+						eraser();
+						swal("Module Saved!", "Module has been saved!", "success");
+						$('#myModalx').modal('toggle');
+						$("#moduleRepo").hide();
+						$("#labelModuleRepo").hide();
+				},
+				error : function(){
+						console.log("error");
+						$('#myModalx').modal('toggle');
+						swal({
+							title 						 : "Saved Error!",
+							text  					   : "Module has not been saved!",
+							type  						 : "error",
+							confirmButtonColor : "#DD6B55",
+							confirmButtonText  : "OK",
+							closeOnConfirm		 : true
+							},
+							function(){
+								$('#myModalx').modal('show');
+						});
+				}
+			});
+				return false;
 		});
 
   });
@@ -308,6 +272,7 @@
     $("#approved").val(" ");
     $("#track_id").val(" ");
 		$("#image").val("");
-		$("#addModule").val("");
-		$("#addGitRepo").val("");
+		$("#moduleGit").val("");
+		$("#addModule").val(" ");
+		$("#addGitRepo").val(" ");
     }

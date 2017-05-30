@@ -1,23 +1,10 @@
-n/n k j<?php
-
+<?php
 	foreach ($scripts['foot'] as $file)
 	{
 		$url = start_with($file, 'http') ? $file : base_url($file);
 		echo '<script type="text/javascript" src="' . $url . '"></script>' . PHP_EOL;
 	}
-
-
  ?>
-
-	<!--Modal History-->
-<div id="myModalh" class="modal fade" role="dialog">
-	<img class="imgWarning" src="http://100dayscss.com/codepen/alert.png" width="44" height="38" />
-	<span class="titles">Warning!</span>
-	<p class="warningHistory">The issue selected has no existing history.</p>
-	<div class="exit">Dismiss</div>
-</div>
-
-
 
  <!--Modal Add Account-->
  <div id="myModal" class="modal fade" role="dialog" style="z-index: 10000000 !important;">
@@ -30,14 +17,14 @@ n/n k j<?php
 								 <h4 class="modal-title">Register</h4>
 						 </div>
 						 <div class="modal-body">
-								 <form class="form-horizontal">
+								 <form class="form-horizontal" id="addAccount">
 									 <div class="md-form">
-											 <input type="text" class="form-control" id="firstname" required>
+											 <input type="text" class="form-control" id="firstname">
 											 <label for="firstname">Enter Firstname:</label>
 									 </div>
 
 									 <div class="md-form">
-											 <input type="text" class="form-control" id="lastname" name="lastname" required>
+											 <input type="text" class="form-control" id="lastname" name="lastname">
 											 <label for="lastname">Enter Lastname:</label>
 									 </div>
 
@@ -66,24 +53,23 @@ n/n k j<?php
 											 </select>
 									 </div>
 
-
 									 <div class="md-form">
-											 <input type="text" class="form-control" id="uname" required>
+											 <input type="text" class="form-control" id="uname">
 											 <label for="uname">Enter Username:</label>
 									 </div>
 
 									 <div class="md-form">
-											 <input type="password" class="form-control" id="pass" required>
+											 <input type="password" class="form-control" id="pass">
 											 <label for="pass">Enter Password:</label>
 									 </div>
 
 									 <div class="md-form">
-											 <input type="password" class="form-control" id="pass2" required>
+											 <input type="password" class="form-control" id="pass2">
 											 <label for="pass2">Confirm Password:</label>
 									 </div>
 
 									 <div class="form-group">
-											 <button type="submit" id="register" class="btn btn-primary register pull-right">Submit</button>
+											 <button type="submit" id="register" class="btn btn-primary pull-right">Submit</button>
 											 <button type="submit" id="cancel" class="btn btn-danger pull-right">Cancel</button>
 									 </div>
 
@@ -160,24 +146,19 @@ n/n k j<?php
 
 											 <div class="form-group">
 													 <select id="moduleGit" class="form-control moduleGit">
-													 <option id="choose" value="" disabled selected style="display: none;">Please Choose</option>
+													 <option value="" disabled selected style="display: none;">Please Choose</option>
 													 <option id="modules" value="modules">Module</option>
 													 <option id="gitRepo" value="gitRepo">Git Repo</option>
 													 </select>
 											 </div>
 
 											 <div class="md-form">
-												 <input type="text" class="form-control" id="addModule" required>
-												 <label id="labelModule" for="addModule">Module:</label>
-											 </div>
-
-											 <div class="md-form">
-												 <input type="text" class="form-control" id="addGitRepo" required>
-												 <label id="labelGit" for="addGitRepo">Git Repo:</label>
+												 <input type="text" class="form-control" id="moduleRepo" required>
+												 <label id="labelModuleRepo" for="moduleRepo"></label>
 											 </div>
 
 		                   <div>
-												 <button type="submit" class="btn btn-success addModuleGitRepo pull-right">Save</button>
+												 <button type="submit" class="btn btn-success addModuleGitRepo pull-right">Add</button>
 												 <button type="submit" class="btn btn-danger cancel pull-right">Cancel</button>
 		                   </div>
 

@@ -1,3 +1,5 @@
+var obj = {};
+
 $(function(){
 	$("#login").click(function(){
 			var obj = { username : $("#username").val(), password : $("#password").val()};
@@ -15,7 +17,8 @@ $(function(){
 						}
 						else
 						{
-							alert("Wrong " + data[1])
+							swal("Wrong " + data[1] + "!", data[1] + " does not exist!","warning");
+							// alert("Wrong " + data[1])
 						}
 
 					},
@@ -26,50 +29,93 @@ $(function(){
 			});
 	});
 
-	$(".register").click(function(){
-		var obj = {
-					  firstname     : $("#firstname").val(),
-				    lastname      : $("#lastname").val(),
-				    username      : $("#uname").val(),
-				    git_repo_type : $("#gitrepo").val(),
-				    access_type   : $("#atype").val(),
-				    password      : $("#pass").val(),
-				    password2     : $("#pass2").val()
-				  };
+	$("#register").click(function(){
 
-				//  if($.trim($('#firstname').val()) == '' || $.trim($('#lastname').val()) == '' || $.trim($('#uname').val()) == '' || $.trim($('#gitrepo').val()) == ''){
-	 		// 		 console.log('Please fill out the empty fields');
-				//   }
-				//   else if ($.trim($('#atype').val()) == '' || $.trim($('#pass').val()) == '' || $.trim($('#pass2').val()) == '') {
-	 		// 		 console.log('Please fill out the empty fields');
-				//   }
-				//   else if (obj['password'] != obj['password2']) {
-	 		// 		 console.log("Password Not Match");
-				//   }
+		obj['firstname']     = $("#firstname").val();
+		obj['lastname']      = $("#lastname").val();
+		obj['username']      = $("#uname").val();
+		obj['git_repo_type'] = $("#gitrepo").val();
+		obj['access_type']   = $("#atype").val();
+		obj['password']      = $("#pass").val();
+		obj['password2']     = $("#pass2").val();
 
 		$.ajax({
-				type : "POST",
-				 url : $("base").attr('href') + "index.php/main/register",
-				data : obj,
-			 success : function(data){
-			 console.log(data);
+				type 		: "POST",
+				url 		: $("base").attr('href') + "index.php/main/register",
+				data	 	: obj,
+			  success : function(data){
+					if($.trim($('#firstname').val()) == '' || $.trim($('#lastname').val()) == '' || $.trim($('#uname').val()) == '' || $.trim($('#gitrepo').val()) == ''){
+						$('#myModal').modal('toggle');
+						swal({
+							title 						  : "Error!",
+							text  					    : "Don't leave empty fields!",
+							type  						  : "error",
+							confirmButtonColor : "#DD6B55",
+							confirmButtonText  : "OK",
+							closeOnConfirm		 	: true
+							},
+							function(){
+								$('#myModal').modal('show');
+						});
+					 }
+					 else if ($.trim($('#atype').val()) == '' || $.trim($('#pass').val()) == '' || $.trim($('#pass2').val()) == '') {
+						 $('#myModal').modal('toggle');
+						 swal({
+							 title 						  : "Error!",
+							 text  					    : "Don't leave empty fields!",
+							 type  						  : "error",
+							 confirmButtonColor : "#DD6B55",
+							 confirmButtonText  : "OK",
+							 closeOnConfirm		 	: true
+							 },
+							 function(){
+								 $('#myModal').modal('show');
+						 });
+					 }
+					 else if (obj['password'] != obj['password2']) {
+						 $('#myModal').modal('toggle');
+						 swal({
+							 title 						  : "Error!",
+							 text  					    : "Password does not match!",
+							 type  						  : "error",
+							 confirmButtonColor : "#DD6B55",
+							 confirmButtonText  : "OK",
+							 closeOnConfirm		 	: true
+							 },
+							 function(){
+								 $('#myModal').modal('show');
+						 });
+					 }
+					 else {
+						eraser();
+	 			 		swal("Account Saved", "You can now log in your account", "success");
+	 					$('#myModal').modal('toggle');
+					 }
 			 },
 			 error : function(){
 			 console.log('error');
-			 }
+			}
 		});
+		return false;
 	});
+
+	$("#cancel").click(function(){
+		$("#addAccount")[0].reset();
+		return false;
+	});
+
+	$(".close").click(function(){
+		eraser();
+	})
 });
 
 function eraser()
 {
-
-$("#firstname").val("");
-$("#lastname").val("");
-$("#uname").val("");
+$("#firstname").val(" ");
+$("#lastname").val(" ");
+$("#uname").val(" ");
 $("#gitrepo").val("");
 $("#atype").val("");
 $("#pass").val("");
 $("#pass2").val("");
-
 }
