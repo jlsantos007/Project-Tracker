@@ -5,6 +5,10 @@
   <?php elseif($issue_status == "DONE"): ?>
   <p>DETAILS (DONE):</p>
   <?php endif ?>
+  <p>DEV: <?php echo $this->themodeloftruth->dev($assigned_to); ?></p>
+  <?php if (!$assigned_qa == null): ?>
+  <p>QA:  <?php echo $this->themodeloftruth->qa($assigned_qa); ?></p>
+  <?php endif ?>
   <?php echo $issue_desc; ?>
   <?php if (!$image == null): ?>
   <?php echo '<img src="uploads/'.$image.'" alt="sample">';?>

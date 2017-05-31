@@ -73,6 +73,22 @@ class Common extends MY_Controller {
 
 	public function pending()
 	{
+		$this->add_script('public/js/sortable.js');
+		$this->load->library('dropdown');
+		$var = $this->dropdown->getArr();
+
+		$this->addmViewData(array('tables' => $var));
+		$this->addmViewData(array('labels' => array(
+													'Assigned to',
+													'Module Type',
+													'QA Type',
+													'Git Repository',
+													'Platform type',
+													'Priority Level',
+													'Issue Type'
+												  ))
+						   						  );
+
 		$this->load->library('querybuilder', array( 'access' =>$this->session->userdata('access_type')));
 		$this->querybuilder->pending();
 
@@ -94,6 +110,22 @@ class Common extends MY_Controller {
 
 	public function filterDone()
 	{
+		$this->add_script('public/js/sortable.js');
+		$this->load->library('dropdown');
+		$var = $this->dropdown->getArr();
+
+		$this->addmViewData(array('tables' => $var));
+		$this->addmViewData(array('labels' => array(
+													'Assigned to',
+													'Module Type',
+													'QA Type',
+													'Git Repository',
+													'Platform type',
+													'Priority Level',
+													'Issue Type'
+												  ))
+						   						  );
+
 		$this->load->library('querybuilder', array( 'access' =>$this->session->userdata('access_type')));
 		$this->querybuilder->filterDone();
 

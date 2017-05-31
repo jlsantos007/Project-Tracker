@@ -142,7 +142,7 @@
 			else if($this->boolChecker == 2)
 			{
 			 	$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
-			 		'PENDING' AND isActive = 1 AND assigned_to = " .
+			 		'PENDING' AND isActive = 1 AND assigned_qa = " .
 			 		$this->CI->session->userdata('id');
 			}
 			else

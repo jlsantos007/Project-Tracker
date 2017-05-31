@@ -35,8 +35,6 @@ class Themodeloftruth extends CI_Model {
 
 		}
 
-
-
 	//custom model for library
 	function getDropDown($table)
 	{
@@ -64,6 +62,34 @@ class Themodeloftruth extends CI_Model {
 			$arr[$name] = $value->id;
 		}
 		return $arr;
+	}
+
+	function dev($assignUser)
+	{
+		$var = $this->db->select('id, firstname, lastname')
+					 	->from('user_tbl')
+						->where('id', $assignUser)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->firstname.' '.$value->lastname;
+		}
+		return $name;
+	}
+
+	function qa($assignUser)
+	{
+		$var = $this->db->select('id, firstname, lastname')
+						->from('user_tbl')
+						->where('id', $assignUser)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->firstname.' '.$value->lastname;
+		}
+		return $name;
 	}
 
 	function issueType()
