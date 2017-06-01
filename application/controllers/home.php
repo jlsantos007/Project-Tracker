@@ -10,6 +10,7 @@ class Home extends MY_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('themodeloftruth');
+		// $this->load->library('pagination');
 	}
 
 	public function index()
@@ -30,6 +31,23 @@ class Home extends MY_Controller {
 													))
 														);
 
+	  $this->load->library('querybuilder', array( 'access' =>$this->session->userdata('access_type')));
+		$this->querybuilder->mywork();
+
+
+	  $config["total_rows"] = $this->querybuilder->getCount();
+	  // $config["per_page"] = 5;
+		$config["uri_segment"] = 3;
+		// $choice = $config["total_rows"] / $config["per_page"];
+		// $config["num_links"] = $choice;
+
+		// $this->pagination->initialize($config);
+
+		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$data["results"] = $this->querybuilder->getResult();
+		// $data["links"] = $this->pagination->create_links();
+		$this->add_script('public/js/issue.js');
+		$this->addmViewData($data);
 		$this->render('body/mywork');
 	}
 

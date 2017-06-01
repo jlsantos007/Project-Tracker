@@ -25,6 +25,34 @@
 
 		public function mywork()
 		{
+			$sql = array();
+			if($this->boolChecker == 1)
+			{
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+					'PENDING' AND assigned_qa IS NULL AND current_backlog = 0 AND assigned_to = " .
+					$this->CI->session->userdata('id');
+			}
+			else if($this->boolChecker == 2)
+			{
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+					'PENDING' AND isActive = 1 AND current_backlog = 0 AND assigned_qa = " .
+					$this->CI->session->userdata('id');
+			}
+			else
+			{
+				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
+					'PENDING' AND isActive = 1 AND current_backlog = 0 AND assigned_qa = " .
+					$this->CI->session->userdata('id');
+			}
+
+
+			if(!empty($sql))
+			{
+				$this->fetch($sql);
+			}
+
+
+			return FALSE;
 
 		}
 
@@ -136,19 +164,19 @@
 			if($this->boolChecker == 1)
 			{
 				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
-			 		'PENDING' AND assigned_qa IS NULL AND assigned_to = " .
+			 		'PENDING' AND assigned_qa IS NULL AND current_backlog = 1 AND assigned_to = " .
 			 		$this->CI->session->userdata('id');
 			}
 			else if($this->boolChecker == 2)
 			{
 			 	$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
-			 		'PENDING' AND isActive = 1 AND assigned_qa = " .
+			 		'PENDING' AND isActive = 1 AND current_backlog = 1 AND assigned_qa = " .
 			 		$this->CI->session->userdata('id');
 			}
 			else
 			{
 				$sql[0] = "SELECT * FROM issue_tbl WHERE issue_status =
-			 		'PENDING' AND isActive = 1 AND assigned_qa = " .
+			 		'PENDING' AND isActive = 1 AND current_backlog = 1 AND assigned_qa = " .
 			 		$this->CI->session->userdata('id');
 			}
 

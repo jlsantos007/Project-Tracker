@@ -1,12 +1,7 @@
-<div class="card">
-        <div class="card-header" role="tab" id="heading<?php echo $id; ?>">
-            <a data-toggle="collapse" data-parent="#accordion" href="#<?php echo 'col-' . $id; ?>" aria-expanded="true" aria-controls="#<?php echo 'col-' . $id; ?>" class="hidePrepend">
-                <h5 style="color: <?php echo $priority_color;?> ;" class="mb-0"><?php echo $issue_title;?></h5>
-            </a>
-        </div>
-        <div id="<?php echo 'col-' . $id; ?>" class="collapse" role="tabpanel" aria-labelledby="heading<?php echo $id; ?>">
-            <div class="card-block">
-                    <?php $this->load->view('_partials/issue_cardview_child'); ?>
-            </div>
-         </div>
-    </div>
+<tr>
+  <td><?php echo $issue_title; ?></td>
+  <td><?php echo $created_by; ?></td>
+  <td><?php echo $git_repo_id; ?></td>
+  <td><?php echo $date_created; ?></td>
+  <td colspan="2" style="text-align: center;">Sample</td>
+</tr>
