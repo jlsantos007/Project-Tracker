@@ -21,7 +21,11 @@
       background-color: rgba(255,255,255,0.3);
      }
     .tbl-content{
+<<<<<<< HEAD
       height:500px;
+=======
+      height:300px;
+>>>>>>> 3b90e1a1a186eace6e864ea12a93ab1bb23871df
       overflow-y:auto;
       margin-top: 0px;
       border: 1px solid rgba(255,255,255,0.3);
@@ -41,7 +45,10 @@
       font-weight: 300;
       font-size: 12px;
       color: #000;
+<<<<<<< HEAD
       background-color: white;
+=======
+>>>>>>> 3b90e1a1a186eace6e864ea12a93ab1bb23871df
       border-bottom: solid 1px rgba(255,255,255,0.1);
     }
 

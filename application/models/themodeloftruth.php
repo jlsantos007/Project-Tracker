@@ -78,6 +78,7 @@ class Themodeloftruth extends CI_Model {
 		return $name;
 	}
 
+<<<<<<< HEAD
 	function git($gitrepoName)
 	{
 		$var = $this->db->select('id, name')
@@ -105,6 +106,8 @@ class Themodeloftruth extends CI_Model {
 		return $name;
 	}
 
+=======
+>>>>>>> 3b90e1a1a186eace6e864ea12a93ab1bb23871df
 	function qa($assignUser)
 	{
 		$var = $this->db->select('id, firstname, lastname')
