@@ -12,6 +12,10 @@ $(function(){
 		swal("No History Exist!", "There is no existing issue/s!", "warning");
 	});
 
+	$(".details").click(function(){
+		swal("No History Exist!", "There is no existing issue/s!", "warning");
+	});
+
 	$(".hidePrepend").click(function(event) {
 		/* Act on the event */
 		var yes = $(this).closest('div').next().find('div');
@@ -112,6 +116,25 @@ $(function(){
 				$.ajax({
 						 type : "POST",
 						 url  : $("base").attr('href') + "index.php/listofissue/claim",
+						 data : { issue : id },
+					success : function(data){
+						if(data == "success")
+						{
+						self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+						}
+					},
+					error  : function(){
+
+				}
+				});
+		});
+
+		$(".mywork").click(function(){
+			var id = $(this).attr('data-raw');
+			var self = $(this);
+				$.ajax({
+						 type : "POST",
+						 url  : $("base").attr('href') + "/index.php/common/mywork",
 						 data : { issue : id },
 					success : function(data){
 						if(data == "success")

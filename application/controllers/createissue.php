@@ -39,10 +39,10 @@ class Createissue extends MY_Controller {
 			$config = array(
 			'upload_path' 	=> "./uploads/",
 			'allowed_types' => "gif|jpg|png|jpeg|pdf",
-			'overwrite' 	=> TRUE,
-			'max_size' 		=> "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
-			'max_height' 	=> "",
-			'max_width' 	=> ""
+			'overwrite' 		=> TRUE,
+			'max_size' 			=> "2048000", // Can be set to particular file size , here it is 2 MB(2048 Kb)
+			'max_height' 		=> "",
+			'max_width' 		=> ""
 			);
 			if (isset($_FILES['file']['name'])) {
 			              if (0 < $_FILES['file']['error']) {
@@ -77,7 +77,7 @@ class Createissue extends MY_Controller {
 	{
 		$this->insertArr['issue_title']      = $this->input->post('title');
 		$this->insertArr['issue_desc']       = $this->input->post('description');
-		$this->insertArr['image']						 = $this->input->post('image');
+		$this->insertArr['image']			       = $this->input->post('image');
 		$this->insertArr['created_by']       = $this->session->userdata('id');
 		$this->insertArr['modules_tbl_id']   = $this->input->post('1');
 		$this->insertArr['qa_type_id']       = $this->input->post('2');
@@ -86,12 +86,13 @@ class Createissue extends MY_Controller {
 		$this->insertArr['issue_type_id']    = $this->input->post('6');
 		$this->insertArr['priority_level']   = $this->input->post('5');
 		$this->insertArr['date_created']     = date('Y-m-d');
-		$this->insertArr['track_issue_id']  = $this->input->post('ids');
+		$this->insertArr['track_issue_id']   = $this->input->post('ids');
 
 		 if($this->input->post('0'))
 		 {
-			$this->insertArr['assigned_to']  = $this->input->get_post('0');
-			$this->insertArr['start_date']		= date('Y-m-d');
+			$this->insertArr['assigned_to']  		= $this->input->get_post('0');
+			$this->insertArr['current_backlog'] = 0;
+			$this->insertArr['start_date']			= date('Y-m-d');
 			 if ($this->session->userdata('access_type') == 3)
 			 {
 			 	$this->insertArr['assigned_qa'] = null;

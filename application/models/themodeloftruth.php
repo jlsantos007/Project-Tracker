@@ -35,8 +35,6 @@ class Themodeloftruth extends CI_Model {
 
 		}
 
-
-
 	//custom model for library
 	function getDropDown($table)
 	{
@@ -64,6 +62,61 @@ class Themodeloftruth extends CI_Model {
 			$arr[$name] = $value->id;
 		}
 		return $arr;
+	}
+
+	function dev($assignUser)
+	{
+		$var = $this->db->select('id, firstname, lastname')
+					 	->from('user_tbl')
+						->where('id', $assignUser)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->firstname.' '.$value->lastname;
+		}
+		return $name;
+	}
+
+	function git($gitrepoName)
+	{
+		$var = $this->db->select('id, name')
+					 	->from('git_repo_tbl')
+						->where('id', $gitrepoName)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->name;
+		}
+		return $name;
+	}
+	function create($createdBy)
+	{
+		$var = $this->db->select('id, firstname, lastname')
+					 	->from('user_tbl')
+						->where('id', $createdBy)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->firstname.' '.$value->lastname;
+		}
+		return $name;
+	}
+
+	function qa($assignUser)
+	{
+		$var = $this->db->select('id, firstname, lastname')
+						->from('user_tbl')
+						->where('id', $assignUser)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->firstname.' '.$value->lastname;
+		}
+		return $name;
 	}
 
 	function issueType()
@@ -186,14 +239,26 @@ class Themodeloftruth extends CI_Model {
 	{
 		$ass = ($this->session->userdata('access_type') == 1) ? 'assigned_to' : 'assigned_qa';
 		$update = $this->db->set($ass, $this->session->userdata('id'));
-		if($this->session->userdata('access_type') == 1)
-		{
-			$update = $update->set('start_date', date("Y-m-d"));
+		if($this->session->userdata('access_type') == 1) {
+			$update = $update->set('current_backlog', 1);
+		}
+		elseif ($this->session->userdata('access_type') == 2) {
+			$update = $update->set('current_backlog', 1);
+		}
+		elseif ($this->session->userdata('access_type') == 3) {
+			$update = $update->set('current_backlog', 1);
 		}
 		return $update->set('issue_status', 'PENDING')
 					  ->where('id', $id)
 					  ->update($table);
 
+	}
+
+	function updateWork($id, $table)
+	{
+		return  $this->db->set('start_date', date("Y-m-d"))->set('current_backlog', 0)
+						->where('id', $id)
+						->update($table);
 	}
 
 

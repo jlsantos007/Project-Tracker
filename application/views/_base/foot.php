@@ -118,7 +118,11 @@
                        <input type="text" id="form1" class="form-control">
                        <label for="form1" class="">Issue Description:</label>
                    </div>
-                       <input type = "file" name = "file" size = "20" id="file"/>
+
+									 <div class="form-group">
+                       <input type="file" name="file" class="file" id="file">
+											 <button class="browse btn btn-default" type="button"><i class="glyphicon glyphicon-paperclip">Browse</i></button>
+									 </div>
                        <br>
                        <br>
                        <div>
@@ -171,6 +175,20 @@
 <script>
 $(document).ready(function(){
 	$('#myIssue').modal();
+
+	$(".sidebar").click(function(){
+		$("#menulist").slideToggle();
+	});
+
+	$(document).on('click', '.browse', function(){
+  var file = $(this).parent().parent().parent().find('.file');
+  file.trigger('click');
+	});
+
+	$(document).on('change', '.file', function(){
+  $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+	});
+
 });
 </script>
 <script src="public/js/sweetalert.min.js"></script>

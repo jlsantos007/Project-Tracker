@@ -11,7 +11,7 @@ class Common extends MY_Controller {
 		parent::__construct();
 		//Do your magic here
 		$this->load->model('themodeloftruth');
-		$this->load->library('pagination');
+		// $this->load->library('pagination');
 	}
 
 	public function index($datas)
@@ -51,21 +51,21 @@ class Common extends MY_Controller {
 		}
 
 		$config["total_rows"] = $this->querybuilder->getCount();
-		$config["per_page"] = 5;
+		// $config["per_page"] = 5;
 		$config["uri_segment"] = 3;
-		$choice = $config["total_rows"] / $config["per_page"];
-		$config["num_links"] = $choice;
+		// $choice = $config["total_rows"] / $config["per_page"];
+		// $config["num_links"] = $choice;
 
 
-		$this->pagination->initialize($config);
+		// $this->pagination->initialize($config);
 
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$data["results"] = $this->querybuilder->getResult();
-		$data["links"] = $this->pagination->create_links();
+		// $data["links"] = $this->pagination->create_links();
 		$this->add_script('public/js/issue.js');
 		$this->addmViewData(array( 'linkData' => $datas));
 		$this->addmViewData($data);
-		$this->render('body/issues');
+		$this->render('body/mywork');
 
 	}
 
@@ -73,20 +73,36 @@ class Common extends MY_Controller {
 
 	public function pending()
 	{
+		$this->add_script('public/js/sortable.js');
+		$this->load->library('dropdown');
+		$var = $this->dropdown->getArr();
+
+		$this->addmViewData(array('tables' => $var));
+		$this->addmViewData(array('labels' => array(
+													'Assigned to',
+													'Module Type',
+													'QA Type',
+													'Git Repository',
+													'Platform type',
+													'Priority Level',
+													'Issue Type'
+												  ))
+						   						  );
+
 		$this->load->library('querybuilder', array( 'access' =>$this->session->userdata('access_type')));
 		$this->querybuilder->pending();
 
 		$config["total_rows"] = $this->querybuilder->getCount();
-		$config["per_page"] = 5;
+		// $config["per_page"] = 5;
 		$config["uri_segment"] = 3;
-		$choice = $config["total_rows"] / $config["per_page"];
-		$config["num_links"] = $choice;
+		// $choice = $config["total_rows"] / $config["per_page"];
+		// $config["num_links"] = $choice;
 
-		$this->pagination->initialize($config);
+		// $this->pagination->initialize($config);
 
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$data["results"] = $this->querybuilder->getResult();
-		$data["links"] = $this->pagination->create_links();
+		// $data["links"] = $this->pagination->create_links();
 		$this->add_script('public/js/issue.js');
 		$this->addmViewData($data);
 		$this->render('body/issues');
@@ -94,20 +110,36 @@ class Common extends MY_Controller {
 
 	public function filterDone()
 	{
+		$this->add_script('public/js/sortable.js');
+		$this->load->library('dropdown');
+		$var = $this->dropdown->getArr();
+
+		$this->addmViewData(array('tables' => $var));
+		$this->addmViewData(array('labels' => array(
+													'Assigned to',
+													'Module Type',
+													'QA Type',
+													'Git Repository',
+													'Platform type',
+													'Priority Level',
+													'Issue Type'
+												  ))
+						   						  );
+
 		$this->load->library('querybuilder', array( 'access' =>$this->session->userdata('access_type')));
 		$this->querybuilder->filterDone();
 
 		$config["total_rows"] = $this->querybuilder->getCount();
-		$config["per_page"] = 5;
+		// $config["per_page"] = 5;
 		$config["uri_segment"] = 3;
-		$choice = $config["total_rows"] / $config["per_page"];
-		$config["num_links"] = $choice;
+		// $choice = $config["total_rows"] / $config["per_page"];
+		// $config["num_links"] = $choice;
 
-		$this->pagination->initialize($config);
+		// $this->pagination->initialize($config);
 
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 		$data["results"] = $this->querybuilder->getResult();
-		$data["links"] = $this->pagination->create_links();
+		// $data["links"] = $this->pagination->create_links();
 		$this->add_script('public/js/issue.js');
 		$this->addmViewData($data);
 		$this->render('body/issues');
@@ -213,6 +245,10 @@ class Common extends MY_Controller {
 		}
 	}
 
+	public function mywork()
+	{
+			$bool = $this->themodeloftruth->updateWork($this->input->post('issue'), 'issue_tbl');
+	}
 }
 
 /* End of file common.php */

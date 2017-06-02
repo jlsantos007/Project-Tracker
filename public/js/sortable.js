@@ -4,13 +4,20 @@
 	var optionSelected;
 
     $( function() {
-
     $( "#sortable" ).sortable();
-
     $( "#sortable" ).disableSelection();
-
 		$("#moduleRepo").hide();
 		$("#labelModuleRepo").hide();
+
+		$(document).click(function(){
+			$(".menus0").hide();
+			$(".menus1").hide();
+			$(".menus2").hide();
+			$(".menus3").hide();
+			$(".menus4").hide();
+			$(".menus5").hide();
+			$(".menus6").hide();
+		});
 
     $(".thechoosen").click(function(event) {
     	/* Act on the event */
@@ -54,9 +61,21 @@
 			$(".menus6").show();
 		});
 
-
-
     $(".save").click(function(){
+			// if ($.trim($('#form3').val()) == '') {
+			// 	$('#myModals').modal('toggle');
+			// 	swal({
+			// 		title 						 : "Error!",
+			// 		text  					   : "There is no issue title!",
+			// 		type  						 : "error",
+			// 		confirmButtonColor : "#DD6B55",
+			// 		confirmButtonText  : "OK",
+			// 		closeOnConfirm		 : true
+			// 		},
+			// 		function(){
+			// 			$('#myModals').modal('show');
+			// 	});
+			// }
         if(jQuery.isEmptyObject(obj))
         {
             var arr = ['assign', 'modules_tbl_id', 'qa_type_id', 'git_repo_id', 'platform_type_id', 'priority_level', 'issue_type_id'];

@@ -23,8 +23,51 @@ $this->load->view('_partials/navbar', $navbar);
                     </select>
                     <?php endif ?>
 
+                    <div class="tbl-header">
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <thead>
+                          <tr>
+                            <th>Issue Title</th>
+                            <th>Created By</th>
+                            <th>Assigned To</th>
+                            <th>Git Repo</th>
+                            <th>Date Created</th>
+                            <th colspan="3" style="text-align: center;">Actions</th>
+                          </tr>
+                        </thead>
+                      </table>
+                    </div>
+                    <div class="tbl-content">
+                      <table cellpadding="0" cellspacing="0" border="0">
+                        <tbody>
+                          <?php if ($userdata['results']): ?>
+                              <?php foreach ($userdata['results'] as $data): ?>
+                                 <?php
+                                 $hasCommon = FALSE;
+                                 $temp = explode(" ", $this->session->userdata('cart'));
+                                 foreach ($temp as $key => $value)
+                                 {
+                                     # code...
+                                     if($data['id'] == $value)
+                                     {
+                                          $hasCommon = TRUE;
+                                          break;
+                                     }
+                                 }
+                                 if(!$hasCommon)
+                                 {
+                                  $this->load->view('_partials/issue_cardview', $data);
+                                 }
+
+                                 ?>
+                             <?php endforeach ?>
+                          <?php endif ?>
+                        </tbody>
+                      </table>
+                    </div>
+
                        <!-- Panel trello -->
-                        <div class="card text-center">
+                        <!-- <div class="card text-center">
                             <div class="card-header default-color-dark white-text" style="background-color: #1CB2CB !important;">
                                 <h1>Issues</h1>
                             </div>
@@ -57,7 +100,7 @@ $this->load->view('_partials/navbar', $navbar);
                             <div class="card-footer text-muted default-color-dark white-text" style="background-color: #1CB2CB !important;">
                                     <?php echo $userdata['links']; ?>
                             </div>
-                        </div>
+                        </div> -->
               <!-- end of panel trello -->
                 </div>
             </div>
