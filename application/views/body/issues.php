@@ -21,6 +21,7 @@ $this->load->view('_partials/navbar', $navbar);
                       <option id="filter" value="DONE">DONE</option>
                       <option id="filter1" value="PENDING">PENDING</option>
                     </select>
+                    <br><br>
                     <?php endif ?>
 
                     <div class="tbl-header">
@@ -29,16 +30,19 @@ $this->load->view('_partials/navbar', $navbar);
                           <tr>
                             <th>Issue Title</th>
                             <th>Created By</th>
+                            <th>Assigned To</th>
                             <th>Git Repo</th>
+                            <th>Platform</th>
+                            <th>Module</th>
                             <th>Date Created</th>
-                            <th colspan="2" style="text-align: center;">Actions</th>
+                            <th colspan="3" style="text-align: center;">Actions</th>
                           </tr>
                         </thead>
                       </table>
                     </div>
-                    <div class="tbl-content">
+                    <div class="tbl-content" id="contents">
                       <table cellpadding="0" cellspacing="0" border="0">
-                        <tbody>
+                        <tbody id="tbody">
                           <?php if ($userdata['results']): ?>
                               <?php foreach ($userdata['results'] as $data): ?>
                                  <?php

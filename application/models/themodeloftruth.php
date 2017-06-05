@@ -92,6 +92,62 @@ class Themodeloftruth extends CI_Model {
 		return $name;
 	}
 
+	function git($gitrepoName)
+	{
+		$var = $this->db->select('id, name')
+					 	->from('git_repo_tbl')
+						->where('id', $gitrepoName)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->name;
+		}
+		return $name;
+	}
+
+	function create($createdBy)
+	{
+		$var = $this->db->select('id, firstname, lastname')
+					 	->from('user_tbl')
+						->where('id', $createdBy)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->firstname.' '.$value->lastname;
+		}
+		return $name;
+	}
+
+	function module($moduleID)
+	{
+		$var = $this->db->select('id, name')
+						->from('modules_tbl')
+						->where('id', $moduleID)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->name;
+		}
+		return $name;
+	}
+
+	function platform($platformID)
+	{
+		$var = $this->db->select('id, name')
+						->from('platform_type')
+						->where('id', $platformID)
+						->get()
+						->result();
+		$name;
+		foreach ($var as $key => $value) {
+			$name = $value->name;
+		}
+		return $name;
+	}
+
 	function issueType()
 	{
 		$var = $this->db->select('id, name')

@@ -261,6 +261,20 @@
 				return false;
 		});
 
+		$(".details").click(function(){
+			var id = $(this).attr('data-raw');
+
+			$.ajax({
+				url 		: "modal.php",
+				method	: "POST",
+				data 		: {id : id},
+				success	: function(data){
+					$('#issue_detail').html(data);
+					$('#myModalDetails').modal("show");
+				}
+			});
+		});
+
   });
 
     function eraser()

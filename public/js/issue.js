@@ -1,11 +1,16 @@
 $(function(){
 	$(".history").click(function(){
 		var id = $(this).attr('data-raw');
-		var post = $(this).closest("div").prev().closest('div').parent().parent().parent();
-		$.get($("base").attr('href') + "index.php/listofissue/history/" + id, function(data){
-			post.prepend(data);
+
+		$.ajax({
+			url 		: "modal.php",
+			method	: "POST",
+			data 		: {id : id},
+			success	: function(data){
+				$('#issue_detail').html(data);
+				$('#myModalDetails').modal("show");
+			}
 		});
-		return false;
 	});
 
 	$(".nullHistory").click(function(){
@@ -13,7 +18,17 @@ $(function(){
 	});
 
 	$(".details").click(function(){
-		swal("No History Exist!", "There is no existing issue/s!", "warning");
+		var id = $(this).attr('data-raw');
+
+		$.ajax({
+			url 		: "modal.php",
+			method	: "POST",
+			data 		: {id : id},
+			success	: function(data){
+				$('#issue_detail').html(data);
+				$('#myModalDetails').modal("show");
+			}
+		});
 	});
 
 	$(".hidePrepend").click(function(event) {
@@ -120,7 +135,7 @@ $(function(){
 					success : function(data){
 						if(data == "success")
 						{
-						self.closest('div').parent().parent().parent().parent().parent().parent().remove();
+
 						}
 					},
 					error  : function(){

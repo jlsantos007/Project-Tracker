@@ -119,16 +119,13 @@
                        <label for="form1" class="">Issue Description:</label>
                    </div>
 
-									 <div class="form-group">
                        <input type="file" name="file" class="file" id="file">
-											 <button class="browse btn btn-default" type="button"><i class="glyphicon glyphicon-paperclip">Browse</i></button>
-									 </div>
-                       <br>
-                       <br>
-                       <div>
+											 <button class="browse btn btn-default" type="button">BROWSE</button>
+
+
                          <button type="submit" class="btn btn-success save pull-right">Save</button>
                          <button type="submit" class="btn btn-danger cancel pull-right">Cancel</button>
-                       </div>
+        
                  </form>
              </div>
          </div>
@@ -171,6 +168,22 @@
 		         </div>
 		       </div>
 		     </div>
+
+				 <div id="myModalDetails" class="modal fade" role="dialog" style="z-index: 10000000 !important;">
+		 		    <div class="modal-dialog">
+
+		 		        <!-- Modal content-->
+		 		        <div class="modal-content">
+		 		            <div class="modal-header">
+		 		                <button type="button" class="close" data-dismiss="modal">&times;</button>
+		 		                <h4 class="modal-title">Details</h4>
+		 		            </div>
+		 		            <div class="modal-body" id="issue_detail">
+
+		 		            </div>
+		 		        </div>
+		 		     </div>
+		 		  </div>
 
 <script>
 $(document).ready(function(){

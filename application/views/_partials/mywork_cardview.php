@@ -5,6 +5,8 @@
         <div class="col-sm-1"  style="text-align: center;">
         <?php if ($issue_type_id == 1): ?>
           <img src="public/img/ladybug.png" width="30px" height="30px">
+        <?php elseif ($issue_type_id == 2): ?>
+          <img src="public/img/magic-wand.jpg" width="30px" height="30px">
         <?php elseif ($issue_type_id == 3): ?>
           <img src="public/img/star.png" width="30px" height="30px">
         <?php endif ?>
@@ -21,32 +23,22 @@
           <?php
           if (base_url(uri_string()) == base_url().'home') {
             if ($this->session->userdata('access_type') == 1) {
-              echo '<a class="btn btn-primary finish" href="'.base_url().'index.php/home'.'" data-raw="'.$id.'" style="padding: 3px 20px;">Finish</a>';
-              echo '<a class="btn btn-primary hidePrepend" role="button" data-toggle="collapse" data-parent="#accordion" href="#col-' . $id .'" aria-expanded="true" aria-controls="#col-' . $id . '" style="padding: 3px 20px;">Details</a>';
-              echo '<div id="col-' . $id . '" class="collapse" role="tabpanel" aria-labelledby="heading' . $id . '">';
-              echo '<div class="card-block" style="width: 41.5rem;">';
-                    $this->load->view('_partials/issue_cardview_child');
-              echo '</div>';
-              echo '</div>';
+              echo '<a class="btn btn-primary btn-sm finish" href="'.base_url().'index.php/home'.'" data-raw="'.$id.'">Finish</a>';
+              echo '<a class="btn btn-primary btn-sm details" data-toggle="modal" data-target="#myModalDetails" data-raw="'.$id.'">Details</a>';
             }
             elseif ($this->session->userdata('access_type') == 2 || $this->session->userdata('access_type') == 3) {
-              echo '<a class="btn btn-primary developer" href="'.base_url().'index.php/home'.'" data-raw="'.$id.'" style="padding: 3px 20px;">Back to Dev</a>';
-              echo '<a class="btn btn-primary done" href="'.base_url().'index.php/home'.'" data-raw="'.$id.'" style="padding: 3px 20px;">Done</a>';
+              echo '<a class="btn btn-primary btn-sm developer" href="'.base_url().'index.php/home'.'" data-raw="'.$id.'">Back to Dev</a>';
+              echo '<a class="btn btn-primary btn-sm done" href="'.base_url().'index.php/home'.'" data-raw="'.$id.'">Done</a>';
             }
           }
           elseif (($userdata['linkData'] == 1 && $this->session->userdata('access_type') == 1) || ($userdata['linkData'] == 1 && $this->session->userdata('access_type') == 2) || ($userdata['linkData'] == 1 && $this->session->userdata('access_type') == 3)) {
-            echo '<a class="btn btn-primary mywork" href="'.base_url().'index.php/common/index/1'.'" data-raw="' . $id . '" style="padding: 3px 20px;">Add to My Work</a>';
+            echo '<a class="btn btn-primary btn-sm mywork" href="'.base_url().'index.php/common/index/1'.'" data-raw="' . $id . '">Add to My Work</a>';
           }
           elseif ($userdata['linkData'] == 2 && $this->session->userdata('access_type') == 1) {
-            echo '<a class="btn btn-primary history" role="button" data-toggle="collapse" data-parent="#accordion" href="#col-' . $id .'" aria-expanded="true" aria-controls="#col-' . $id . '" style="padding: 3px 20px;">Details</a>';
-            echo '<div id="col-' . $id . '" class="collapse" role="tabpanel" aria-labelledby="heading' . $id . '">';
-            echo '<div class="card-block" style="width: 41.5rem;">';
-                  $this->load->view('_partials/issue_cardview_child');
-            echo '</div>';
-            echo '</div>';
+            echo '<a class="btn btn-primary btn-sm details" data-toggle="modal" data-target="#myModalDetails" data-raw="'.$id.'">Details</a>';
           }
           elseif ($userdata['linkData'] == 3 && $this->session->userdata('access_type') == 3) {
-            echo '<a class="btn btn-primary approved" href="'.base_url().'index.php/common/index/3'.'" data-raw="'.$id.'" style="padding: 3px 20px;">Approved</a>';
+            echo '<a class="btn btn-primary btn-sm approved" href="'.base_url().'index.php/common/index/3'.'" data-raw="'.$id.'">Approved</a>';
           }
           ?>
         </div>
