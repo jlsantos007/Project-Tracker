@@ -30,12 +30,26 @@ $this->load->view('_partials/navbar', $navbar);
                           <tr>
                             <th>Issue Title</th>
                             <th>Created By</th>
+<<<<<<< HEAD
                             <th>Assigned To</th>
+=======
+<<<<<<< HEAD
+                            <th>Assigned To</th>
+                            <th>Git Repo</th>
+                            <th>Date Created</th>
+                            <th colspan="3" style="text-align: center;">Actions</th>
+=======
+>>>>>>> b59526cff2c9ac817b88ef723a4fcec7c53e2eda
                             <th>Git Repo</th>
                             <th>Platform</th>
                             <th>Module</th>
                             <th>Date Created</th>
+<<<<<<< HEAD
                             <th colspan="3" style="text-align: center;">Actions</th>
+=======
+                            <th colspan="2" style="text-align: center;">Actions</th>
+>>>>>>> 3b90e1a1a186eace6e864ea12a93ab1bb23871df
+>>>>>>> b59526cff2c9ac817b88ef723a4fcec7c53e2eda
                           </tr>
                         </thead>
                       </table>

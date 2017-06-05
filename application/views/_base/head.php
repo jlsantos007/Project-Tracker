@@ -13,6 +13,77 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<<<<<<< HEAD
+=======
+    <style>
+    table{
+      width:100%;
+      table-layout: fixed;
+    }
+    .tbl-header{
+      background-color: rgba(255,255,255,0.3);
+     }
+    .tbl-content{
+<<<<<<< HEAD
+      height:500px;
+=======
+      height:300px;
+>>>>>>> 3b90e1a1a186eace6e864ea12a93ab1bb23871df
+      overflow-y:auto;
+      margin-top: 0px;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+    th{
+      padding: 20px 15px;
+      text-align: left;
+      font-weight: 500;
+      font-size: 12px;
+      color: #000
+      text-transform: uppercase;
+    }
+    td{
+      padding: 15px;
+      text-align: left;
+      vertical-align:middle;
+      font-weight: 300;
+      font-size: 12px;
+      color: #000;
+<<<<<<< HEAD
+      background-color: white;
+=======
+>>>>>>> 3b90e1a1a186eace6e864ea12a93ab1bb23871df
+      border-bottom: solid 1px rgba(255,255,255,0.1);
+    }
+
+    .file {
+      visibility: hidden;
+      position: absolute;
+    }
+    .scroll {
+      height: 465px;
+      overflow-y: scroll;
+    }
+    #style-3::-webkit-scrollbar-track
+    {
+    	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    	background-color: #F5F5F5;
+    }
+
+    #style-3::-webkit-scrollbar
+    {
+    	width: 6px;
+    	background-color: #F5F5F5;
+    }
+
+    #style-3::-webkit-scrollbar-thumb
+    {
+    	background-color: #000000;
+    }
+
+    }
+    </style>
+
+>>>>>>> b59526cff2c9ac817b88ef723a4fcec7c53e2eda
     <?php
     	foreach ($stylesheets as $media => $files)
     	{
